@@ -1,4 +1,4 @@
-Documentation: https://docs.google.com/document/d/1Mr3Xwlimo3S-Mtc7Ozp2s21AQV-GQF2BCNNlOJYipn0/edit
+Documentation: https://docs.google.com/document/d/1Mr3Xwlimo3S-Mtc7Ozp2s21AQV-GQF2BCNNlOJYipn0/edit \
 Trello: https://trello.com/b/8Y7bExlD/ochiidinumbra
 # Main branches are the same as the app environments: 
   1. development \
