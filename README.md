@@ -1,10 +1,10 @@
 Main branches are the same as the app environments: \
-&nbsp;&nbsp; development \
-    - all code is written here \
-  # staging \
-    - after an approved pull requests gets here \
-  # production \
-    - after it has been tested gets here \
+  1. development \
+    all code is written here \
+  2. staging \
+    after an approved pull requests gets here \
+  3. production \
+    after it has been tested gets here \
 Each branch should be named like so: \
   # feature/[id-feature]_[id-title] \
   # bug/[bug-name] \
