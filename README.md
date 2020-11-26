@@ -1,4 +1,4 @@
-Main branches are the same as the app environments: \
+Main branches are the same as the app environments: 
   1. development \
     all code is written here \
   2. staging \
@@ -8,5 +8,5 @@ Main branches are the same as the app environments: \
 Each branch should be named like so: \
   * feature/[id-feature]_[id-title] 
   * bug/[bug-name] 
-  * research/[research-name] 
+  * research/[research-name] \
     All of this should have as parent branch 'development' ! 
