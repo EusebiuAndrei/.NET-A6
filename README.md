@@ -1,5 +1,5 @@
 Main branches are the same as the app environments: \
-  # development \
+&nbsp;&nbsp; development \
     - all code is written here \
   # staging \
     - after an approved pull requests gets here \
