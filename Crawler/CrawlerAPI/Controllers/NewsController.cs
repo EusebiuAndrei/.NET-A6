@@ -14,6 +14,7 @@ namespace CrawlerAPI.Controllers
         public async Task<ActionResult<List<News>>> GetSportNewsFromBBC()
         {
             SportCrawler sportCrawler = new SportCrawler();
+
             return await sportCrawler.StartCrawlerAsync();
         }
 
@@ -21,6 +22,7 @@ namespace CrawlerAPI.Controllers
         public async Task<ActionResult<List<News>>> GetHealthNewsFromBBC()
         {
             HealthCrawler healthCrawler = new HealthCrawler();
+
             return await healthCrawler.StartCrawlerAsync();
         }
     }
