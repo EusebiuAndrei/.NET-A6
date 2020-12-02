@@ -50,7 +50,7 @@ namespace CrawlerAPI.CrawlingFunctionsBBC
                     {
                         if (item.InnerText.Trim() != "" && !item.InnerText.StartsWith(".css"))
                         {
-                            concatenateParagraphs.Append(item.InnerText.Trim());
+                            concatenateParagraphs.Append(HtmlEntity.DeEntitize(item.InnerText.Trim()));
                         }
                     }
                     
