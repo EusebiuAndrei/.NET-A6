@@ -2,9 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using API.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -15,6 +17,7 @@ namespace API
 {
     public class Startup
     {
+        private readonly IConfiguration _config;
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -25,6 +28,13 @@ namespace API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<DataContext>(options =>
+            {
+                options.UseSqlite(_config.GetConnectionString("DefaultConnection"));
+            });
+            services.AddScoped<INewsRepository, NewsRepository>();
+            services.AddScoped<INewsTopicRepository, NewsTopicRepository>();
+            services.AddScoped<ITopicRepository, TopicRepository>();
             services.AddControllers();
         }
 
