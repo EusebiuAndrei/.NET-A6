@@ -41,5 +41,13 @@ namespace CrawlerAPI.Controllers
 
             return await worldCrawler.StartCrawlerAsync();
         }
+
+           [HttpGet("bbc/business")]
+        public async Task<ActionResult<List<News>>> GetBusinessNewsFromBBC()
+        {
+            BusinessCrawler businessCrawler = new BusinessCrawler();
+
+            return await businessCrawler.StartCrawlerAsync();
+        }
     }
 }
