@@ -20,7 +20,7 @@ namespace CrawlerAPI.CrawlingFunctionsBBC
             var html = await httpClient.GetStringAsync(url);
             var htmlDocument = new HtmlDocument();
             htmlDocument.LoadHtml(html);
-            var divs = htmlDocument.DocumentNode.Descendants("div").Where(node => node.GetAttributeValue("class", "").Equals("gel-layout__item gel-1/4@xl gs-u-display-flex@xl") || node.GetAttributeValue("class", "").Equals("gel-layout__item gel-1/3@m gel-1/4@l gel-1/5@xxl nw-o-keyline nw-o-no-keyline@m")).ToList();
+            var divs = htmlDocument.DocumentNode.Descendants("div").Where(node => node.GetAttributeValue("class", "").Equals("gel-layout__item gel-1/4@xl gs-u-display-flex@xl") || node.GetAttributeValue("class", "").Equals("gel-layout__item gel-1/1@m gel-1/3@xl gel-1/1@l gel-1/3@xxl nw-o-keyline nw-o-no-keyline@l")).ToList();
             foreach (var div in divs)
             {
                 var title = HtmlEntity.DeEntitize(div.Descendants("h3").FirstOrDefault().InnerText);
