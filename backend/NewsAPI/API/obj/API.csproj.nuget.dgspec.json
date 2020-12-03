@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Fac\\.NET-A6\\backend\\NewsAPI\\API\\API.csproj": {}
+    "D:\\.NET Projects\\Ochii_Din_Umbra\\.NET-A6\\backend\\NewsAPI\\API\\API.csproj": {}
   },
   "projects": {
-    "C:\\Fac\\.NET-A6\\backend\\NewsAPI\\API\\API.csproj": {
+    "D:\\.NET Projects\\Ochii_Din_Umbra\\.NET-A6\\backend\\NewsAPI\\API\\API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Fac\\.NET-A6\\backend\\NewsAPI\\API\\API.csproj",
+        "projectUniqueName": "D:\\.NET Projects\\Ochii_Din_Umbra\\.NET-A6\\backend\\NewsAPI\\API\\API.csproj",
         "projectName": "API",
-        "projectPath": "C:\\Fac\\.NET-A6\\backend\\NewsAPI\\API\\API.csproj",
-        "packagesPath": "C:\\Users\\a\\.nuget\\packages\\",
-        "outputPath": "C:\\Fac\\.NET-A6\\backend\\NewsAPI\\API\\obj\\",
+        "projectPath": "D:\\.NET Projects\\Ochii_Din_Umbra\\.NET-A6\\backend\\NewsAPI\\API\\API.csproj",
+        "packagesPath": "C:\\Users\\euseb\\.nuget\\packages\\",
+        "outputPath": "D:\\.NET Projects\\Ochii_Din_Umbra\\.NET-A6\\backend\\NewsAPI\\API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\a\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\euseb\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -26,6 +26,7 @@
         },
         "frameworks": {
           "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
             "projectReferences": {}
           }
         },
@@ -37,6 +38,7 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "dependencies": {
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
@@ -51,6 +53,18 @@
             "Microsoft.EntityFrameworkCore.Sqlite": {
               "target": "Package",
               "version": "[5.0.0, )"
+            },
+            "Swashbuckle.AspNetCore.Swagger": {
+              "target": "Package",
+              "version": "[5.6.3, )"
+            },
+            "Swashbuckle.AspNetCore.SwaggerGen": {
+              "target": "Package",
+              "version": "[5.6.3, )"
+            },
+            "Swashbuckle.AspNetCore.SwaggerUI": {
+              "target": "Package",
+              "version": "[5.6.3, )"
             }
           },
           "imports": [
@@ -63,6 +77,16 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[3.1.2, 3.1.2]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[3.1.7, 3.1.7]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -71,7 +95,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100-rc.2.20479.15\\RuntimeIdentifierGraph.json"
         }
       }
     }
