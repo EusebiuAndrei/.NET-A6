@@ -10,44 +10,46 @@ namespace CrawlerAPI.Controllers
     [ApiController]
     public class NewsController : ControllerBase
     {
+        [HttpGet("bbc")]
+        public async Task<ActionResult<List<News>>> GetAllNewsFromBBC()
+        {
+            List<News> allNews = new List<News>();
+            allNews.AddRange(await SportCrawler.GetSportNews());
+            allNews.AddRange(await HealthCrawler.GetHealthNews());
+            allNews.AddRange(await CoronavirusCrawler.GetCoronavirusNews());
+            allNews.AddRange(await WorldCrawler.GetWorldNews());
+            allNews.AddRange(await BusinessCrawler.GetBusinessNews());
+            return allNews;
+        }
+
         [HttpGet("bbc/sport")]
         public async Task<ActionResult<List<News>>> GetSportNewsFromBBC()
         {
-            SportCrawler sportCrawler = new SportCrawler();
-
-            return await sportCrawler.StartCrawlerAsync();
+            return await SportCrawler.GetSportNews();
         }
 
         [HttpGet("bbc/health")]
         public async Task<ActionResult<List<News>>> GetHealthNewsFromBBC()
         {
-            HealthCrawler healthCrawler = new HealthCrawler();
-
-            return await healthCrawler.StartCrawlerAsync();
+            return await HealthCrawler.GetHealthNews();
         }
 
         [HttpGet("bbc/coronavirus")]
         public async Task<ActionResult<List<News>>> GetCoronavirusNewsFromBBC()
         {
-            CoronavirusCrawler coronavirusCrawler = new CoronavirusCrawler();
-
-            return await coronavirusCrawler.StartCrawlerAsync();
+            return await CoronavirusCrawler.GetCoronavirusNews();
         }
 
-         [HttpGet("bbc/world")]
+        [HttpGet("bbc/world")]
         public async Task<ActionResult<List<News>>> GetWorldNewsFromBBC()
         {
-            WorldCrawler worldCrawler = new WorldCrawler();
-
-            return await worldCrawler.StartCrawlerAsync();
+            return await WorldCrawler.GetWorldNews();
         }
 
-           [HttpGet("bbc/business")]
+        [HttpGet("bbc/business")]
         public async Task<ActionResult<List<News>>> GetBusinessNewsFromBBC()
         {
-            BusinessCrawler businessCrawler = new BusinessCrawler();
-
-            return await businessCrawler.StartCrawlerAsync();
+            return await BusinessCrawler.GetBusinessNews();
         }
     }
 }
