@@ -38,9 +38,10 @@ namespace API.Controllers
         }
 
         [HttpDelete("{id}")]
-        public void Remove(int id)
+        public IActionResult Remove(int id)
         {
             _repository.Remove(id);
+            return NoContent();
         }
     }
 }
