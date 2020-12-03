@@ -32,9 +32,10 @@ namespace API.Controllers
         }
 
         [HttpPut("{id}")]
-        public void Update(int id, Topic topic)
+        public IActionResult Update(int id, Topic topic)
         {
             _repository.Update(id, topic);
+            return NoContent();
         }
 
         [HttpDelete("{id}")]
