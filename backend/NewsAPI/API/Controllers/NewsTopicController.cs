@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace API.Controllers
 {
     [ApiController]
-    [Route("api/news-topic")]
+    [Route("api/v1/news-topic")]
     public class NewsTopicController : ControllerBase
     {
         private readonly INewsTopicRepository _repository;

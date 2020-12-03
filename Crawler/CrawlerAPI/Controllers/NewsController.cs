@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CrawlerAPI.Controllers
 {
-    [Route("api/news")]
+    [Route("api/v1/news")]
     [ApiController]
     public class NewsController : ControllerBase
     {

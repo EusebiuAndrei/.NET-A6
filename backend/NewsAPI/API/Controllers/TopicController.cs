@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace API.Controllers
 {
     [ApiController]
-    [Route("api/topic")]
+    [Route("api/v1/topic")]
     public class TopicController : ControllerBase
     {
         private readonly ITopicRepository _repository;
