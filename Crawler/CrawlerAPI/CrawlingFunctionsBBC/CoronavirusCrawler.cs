@@ -10,17 +10,18 @@ using System.Threading.Tasks;
 
 namespace CrawlerAPI.CrawlingFunctionsBBC
 {
-    public class HealthCrawler
+    public class CoronavirusCrawler
     {
         public async Task<List<News>> StartCrawlerAsync()
         {
             List<News> newsList = new List<News>();
-            var url = "https://www.bbc.co.uk/news/health";
+            var url = "https://www.bbc.co.uk/news/coronavirus";
             var httpClient = new HttpClient();
             var html = await httpClient.GetStringAsync(url);
             var htmlDocument = new HtmlDocument();
             htmlDocument.LoadHtml(html);
-            var divs = htmlDocument.DocumentNode.Descendants("div").Where(node => node.GetAttributeValue("class", "").Equals("gel-layout__item gs-u-pb+@m gel-1/3@m gel-1/4@xl gel-1/3@xxl nw-o-keyline nw-o-no-keyline@m") || node.GetAttributeValue("class", "").Equals("gel-layout__item gs-u-pb+@m gel-1/3@m gel0-1/4@xl gel-1/3@xxl nw-o-keyline nw-o-no-keyline@m") || node.GetAttributeValue("class", "").Equals("gs-c-promo gs-t-News nw-c-promo gs-o-faux-block-link gs-u-pb gs-u-pb+@m nw-p-default gs-c-promo--inline@m gs-c-promo--stacked@xxl gs-c-promo--flex")).ToList();
+            var divs = htmlDocument.DocumentNode.Descendants("div").Where(node => node.GetAttributeValue("class", "").Equals("gel-layout__item gs-u-pb+@m gel-1/3@m gel0-1/4@xl gel-1/3@xxl nw-o-keyline nw-o-no-keyline@m") 
+            || node.GetAttributeValue("class", "").Equals("gel-layout__item gs-u-pb+@m gel-1/3@m gel-1/4@xl gel-1/3@xxl nw-o-keyline nw-o-no-keyline@m") || node.GetAttributeValue("class", "").Equals("gel-layout__item gs-u-pb+@m gel-1/1 gel-1/1@xl gel-2/5@xxl gs-u-ml0 nw-o-keyline nw-o-no-keyline@m")).ToList();
             foreach (var div in divs)
             {
                 var title = HtmlEntity.DeEntitize(div.Descendants("h3").FirstOrDefault().InnerText);
@@ -53,12 +54,12 @@ namespace CrawlerAPI.CrawlingFunctionsBBC
                             concatenateParagraphs.Append(HtmlEntity.DeEntitize(item.InnerText.Trim()));
                         }
                     }
-                    
+
                 }
                 var news = new News
                 {
                     Title = title,
-                    Subject = "health",
+                    Subject = "coronavirus",
                     Content = concatenateParagraphs.ToString(),
                     Date = DateTime.ParseExact(date.Substring(0, 19), "yyyy-MM-ddTHH:mm:ss", CultureInfo.InvariantCulture),
                     SourceLink = sourceLink,
@@ -69,3 +70,4 @@ namespace CrawlerAPI.CrawlingFunctionsBBC
         }
     }
 }
+
