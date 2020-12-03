@@ -2,8 +2,8 @@ using System.Collections.Generic;
 using System.Linq;
 using API.Data;
 using API.Entities;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
 
 namespace API.Controllers
 {
@@ -19,12 +19,28 @@ namespace API.Controllers
         }
 
         [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK)]
         public ActionResult<List<News>> Get() => _repository.GetAll().ToList();
 
         [HttpGet("{id}", Name = "GetNewsById")]
-        public ActionResult<News> GetById(int id) => _repository.GetById(id);
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public ActionResult<News> GetById(int id)
+        {
+            var news = _repository.GetById(id);
+            
+            if(news == null)
+            {
+                return NotFound();
+            }
+
+            return news;
+        }
 
         [HttpPost]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public IActionResult Create(News news)
         {
             _repository.Create(news);
@@ -32,6 +48,9 @@ namespace API.Controllers
         }
 
         [HttpPut("{id}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public IActionResult Update(int id, News news)
         {
             _repository.Update(id, news);
@@ -39,6 +58,9 @@ namespace API.Controllers
         }
 
         [HttpDelete("{id}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public IActionResult Remove(int id)
         {
             _repository.Remove(id);

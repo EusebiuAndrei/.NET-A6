@@ -4,6 +4,7 @@ using API.Data;
 using API.Entities;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
 
 namespace API.Controllers
 {
@@ -19,12 +20,18 @@ namespace API.Controllers
         }
 
         [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK)]
         public ActionResult<List<NewsTopic>> Get() => _repository.GetAll().ToList();
 
         [HttpGet("{id}", Name = "GetNewsTopicById")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public ActionResult<NewsTopic> GetById(int id) => _repository.GetById(id);
 
         [HttpPost]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public IActionResult Create(NewsTopic newsTopic)
         {
             _repository.Create(newsTopic);
@@ -32,6 +39,9 @@ namespace API.Controllers
         }
 
         [HttpPut("{id}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public IActionResult Update(int id, NewsTopic newsTopic)
         {
             _repository.Update(id, newsTopic);
@@ -39,6 +49,9 @@ namespace API.Controllers
         }
 
         [HttpDelete("{id}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public IActionResult Remove(int id)
         {
             _repository.Remove(id);
