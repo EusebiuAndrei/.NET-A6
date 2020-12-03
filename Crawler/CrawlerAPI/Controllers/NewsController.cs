@@ -33,5 +33,13 @@ namespace CrawlerAPI.Controllers
 
             return await coronavirusCrawler.StartCrawlerAsync();
         }
+
+         [HttpGet("bbc/world")]
+        public async Task<ActionResult<List<News>>> GetWorldNewsFromBBC()
+        {
+            WorldCrawler worldCrawler = new WorldCrawler();
+
+            return await worldCrawler.StartCrawlerAsync();
+        }
     }
 }
