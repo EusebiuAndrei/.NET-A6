@@ -23,7 +23,7 @@ namespace CrawlerAPI.CrawlingFunctionsBBC
             var divs = htmlDocument.DocumentNode.Descendants("div").Where(node => node.GetAttributeValue("class", "").Equals("gel-layout__item gs-u-pb+@m gel-1/3@m gel-1/4@xl gel-1/3@xxl nw-o-keyline nw-o-no-keyline@m")).ToList();
             foreach (var div in divs)
             {
-                var title = div.Descendants("h3").FirstOrDefault().InnerText;
+                var title = HtmlEntity.DeEntitize(div.Descendants("h3").FirstOrDefault().InnerText);
                 var sourceLink = div.Descendants("a").FirstOrDefault().ChildAttributes("href").FirstOrDefault().Value;
                 if (!sourceLink.StartsWith("https://www.bbc.co.uk"))
                 {

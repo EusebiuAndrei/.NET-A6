@@ -24,7 +24,7 @@ namespace CrawlerAPI.CrawlingFunctionsBBC
             foreach (var div in divs)
             {
                 var innerDiv = div.Descendants("div").FirstOrDefault();
-                var title = innerDiv.ChildAttributes("data-bbc-title").FirstOrDefault().Value;
+                var title = HtmlEntity.DeEntitize(innerDiv.ChildAttributes("data-bbc-title").FirstOrDefault().Value);
                 var sourceLink = div.Descendants("a").FirstOrDefault().ChildAttributes("href").FirstOrDefault().Value;
                 if (!sourceLink.StartsWith("https://www.bbc.co.uk"))
                 {
