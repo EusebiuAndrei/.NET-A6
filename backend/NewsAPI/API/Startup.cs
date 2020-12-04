@@ -26,7 +26,6 @@ namespace API
                 options.UseSqlite(_config.GetConnectionString("DefaultConnection"));
             });
             services.AddScoped<INewsRepository, NewsRepository>();
-            services.AddScoped<INewsTopicRepository, NewsTopicRepository>();
             services.AddScoped<ITopicRepository, TopicRepository>();
             services.AddControllers();
 

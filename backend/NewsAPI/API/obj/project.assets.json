@@ -1267,31 +1267,28 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\euseb\\.nuget\\packages\\": {}
+    "/Users/andu/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\.NET Projects\\Ochii_Din_Umbra\\.NET-A6\\backend\\NewsAPI\\API\\API.csproj",
+      "projectUniqueName": "/Users/andu/Documents/workspace/NET-A6/backend/NewsAPI/API/API.csproj",
       "projectName": "API",
-      "projectPath": "D:\\.NET Projects\\Ochii_Din_Umbra\\.NET-A6\\backend\\NewsAPI\\API\\API.csproj",
-      "packagesPath": "C:\\Users\\euseb\\.nuget\\packages\\",
-      "outputPath": "D:\\.NET Projects\\Ochii_Din_Umbra\\.NET-A6\\backend\\NewsAPI\\API\\obj\\",
+      "projectPath": "/Users/andu/Documents/workspace/NET-A6/backend/NewsAPI/API/API.csproj",
+      "packagesPath": "/Users/andu/.nuget/packages/",
+      "outputPath": "/Users/andu/Documents/workspace/NET-A6/backend/NewsAPI/API/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\euseb\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "/Users/andu/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "targetAlias": "netcoreapp3.1",
           "projectReferences": {}
         }
       },
@@ -1303,7 +1300,6 @@
     },
     "frameworks": {
       "netcoreapp3.1": {
-        "targetAlias": "netcoreapp3.1",
         "dependencies": {
           "Microsoft.EntityFrameworkCore": {
             "target": "Package",
@@ -1342,16 +1338,6 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.AspNetCore.App.Ref",
-            "version": "[3.1.2, 3.1.2]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Host.win-x64",
-            "version": "[3.1.7, 3.1.7]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.AspNetCore.App": {
             "privateAssets": "none"
@@ -1360,7 +1346,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100-rc.2.20479.15\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.1.403/RuntimeIdentifierGraph.json"
       }
     }
   }
