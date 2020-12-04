@@ -14,7 +14,7 @@ namespace CrawlerAPI.Controllers
         public async Task<ActionResult<List<News>>> GetAllNewsFromBBC()
         {
             List<News> allNews = new List<News>();
-            allNews.AddRange(await SportCrawler.GetSportNews());
+            //allNews.AddRange(await SportCrawler.GetSportNews());
             allNews.AddRange(await HealthCrawler.GetHealthNews());
             allNews.AddRange(await CoronavirusCrawler.GetCoronavirusNews());
             allNews.AddRange(await WorldCrawler.GetWorldNews());
