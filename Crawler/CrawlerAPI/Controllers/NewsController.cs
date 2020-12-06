@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using CrawlerAPI.CrawlingFunctionsABCNews;
 using CrawlerAPI.CrawlingFunctionsBBC;
 using CrawlerAPI.NewsModel;
 using Microsoft.AspNetCore.Mvc;
@@ -14,42 +15,84 @@ namespace CrawlerAPI.Controllers
         public async Task<ActionResult<List<News>>> GetAllNewsFromBBC()
         {
             List<News> allNews = new List<News>();
-            allNews.AddRange(await SportCrawler.GetSportNews());
-            allNews.AddRange(await HealthCrawler.GetHealthNews());
-            allNews.AddRange(await CoronavirusCrawler.GetCoronavirusNews());
-            allNews.AddRange(await WorldCrawler.GetWorldNews());
-            allNews.AddRange(await BusinessCrawler.GetBusinessNews());
+            allNews.AddRange(await SportCrawlerBBC.GetSportNews());
+            allNews.AddRange(await HealthCrawlerBBC.GetHealthNews());
+            allNews.AddRange(await CoronavirusCrawlerBBC.GetCoronavirusNews());
+            allNews.AddRange(await WorldCrawlerBBC.GetWorldNews());
+            allNews.AddRange(await BusinessCrawlerBBC.GetBusinessNews());
             return allNews;
         }
 
         [HttpGet("bbc/sport")]
         public async Task<ActionResult<List<News>>> GetSportNewsFromBBC()
         {
-            return await SportCrawler.GetSportNews();
+            return await SportCrawlerBBC.GetSportNews();
         }
 
         [HttpGet("bbc/health")]
         public async Task<ActionResult<List<News>>> GetHealthNewsFromBBC()
         {
-            return await HealthCrawler.GetHealthNews();
+            return await HealthCrawlerBBC.GetHealthNews();
         }
 
         [HttpGet("bbc/coronavirus")]
         public async Task<ActionResult<List<News>>> GetCoronavirusNewsFromBBC()
         {
-            return await CoronavirusCrawler.GetCoronavirusNews();
+            return await CoronavirusCrawlerBBC.GetCoronavirusNews();
         }
 
         [HttpGet("bbc/world")]
         public async Task<ActionResult<List<News>>> GetWorldNewsFromBBC()
         {
-            return await WorldCrawler.GetWorldNews();
+            return await WorldCrawlerBBC.GetWorldNews();
         }
 
         [HttpGet("bbc/business")]
         public async Task<ActionResult<List<News>>> GetBusinessNewsFromBBC()
         {
-            return await BusinessCrawler.GetBusinessNews();
+            return await BusinessCrawlerBBC.GetBusinessNews();
+        }
+
+        [HttpGet("abcnews")]
+        public async Task<ActionResult<List<News>>> GetAllNewsFromABCNews()
+        {
+            List<News> allNews = new List<News>();
+            allNews.AddRange(await InternationalCrawlerABCNews.GetInternationalNews());
+            allNews.AddRange(await PoliticsCrawlerABCNews.GetPoliticsNews());
+            allNews.AddRange(await SportCrawlerABCNews.GetSportNews());
+            allNews.AddRange(await TechnologyCrawlerABCNews.GetTechnologyNews());
+            allNews.AddRange(await EntertainmentCrawlerABCNews.GetEntertainmentNews());
+            return allNews;
+        }
+
+        [HttpGet("abcnews/international")]
+        public async Task<ActionResult<List<News>>> GetInternationalNewsFromABCNews()
+        {
+            return await InternationalCrawlerABCNews.GetInternationalNews();
+        }
+
+        [HttpGet("abcnews/politics")]
+        public async Task<ActionResult<List<News>>> GetPoliticsNewsFromABCNews()
+        {
+            return await PoliticsCrawlerABCNews.GetPoliticsNews();
+        }
+
+        [HttpGet("abcnews/sport")]
+        public async Task<ActionResult<List<News>>> GetSportNewsFromABCNews()
+        {
+            return await SportCrawlerABCNews.GetSportNews();
+        }
+
+        [HttpGet("abcnews/technology")]
+        public async Task<ActionResult<List<News>>> GetTechnologyNewsFromABCNews()
+        {
+            return await TechnologyCrawlerABCNews.GetTechnologyNews();
+        }
+
+        [HttpGet("abcnews/entertainment")]
+        public async Task<ActionResult<List<News>>> GetEntertainmentNewsFromABCNews()
+        {
+            return await EntertainmentCrawlerABCNews.GetEntertainmentNews();
         }
     }
 }

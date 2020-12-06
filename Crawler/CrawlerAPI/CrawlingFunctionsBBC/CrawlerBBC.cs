@@ -6,11 +6,12 @@ using System.Globalization;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace CrawlerAPI.CrawlingFunctionsBBC
 {
-    public static class Crawler
+    public static class CrawlerBBC
     {
         public static async Task<List<News>> StartCrawlerAsync(string url, string[] newsDivsClasses, string subject)
         {
@@ -27,7 +28,6 @@ namespace CrawlerAPI.CrawlingFunctionsBBC
             foreach (var div in divs)
             {
                 string title = HtmlEntity.DeEntitize(div.Descendants("h3").FirstOrDefault().InnerText);
-                Console.WriteLine(title);
                 var descendantA = div.Descendants("a").FirstOrDefault();
                 var sourceLink = descendantA.ChildAttributes("href").FirstOrDefault().Value;
                 if (!sourceLink.StartsWith("https://www.bbc.co.uk"))
@@ -49,24 +49,16 @@ namespace CrawlerAPI.CrawlingFunctionsBBC
                 var newsHtmlDocument = new HtmlDocument();
                 newsHtmlDocument.LoadHtml(newsHtml);
                 HtmlNode article;
+                var date = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss");
                 try
                 {
                     article = newsHtmlDocument.DocumentNode.Descendants("article").Where(node => !node.GetAttributeValue("class", "").Contains("sp-c-fixture")).FirstOrDefault();
+                    date = article.Descendants("time").FirstOrDefault().ChildAttributes("datetime").FirstOrDefault().Value;
                 }
                 catch (Exception e)
                 {
                     Console.WriteLine(e);
                     continue;
-                }
-                var date = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss");
-                try
-                {
-                    date = article.Descendants("time").FirstOrDefault().ChildAttributes("datetime").FirstOrDefault().Value;
-                    Console.WriteLine(date);
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e);
                 }
                 StringBuilder concatenateParagraphs = new StringBuilder();
                 var textElements = new string[]{"h1", "h2", "h3", "h4", "h5", "h6", "p", "li"};
@@ -76,7 +68,7 @@ namespace CrawlerAPI.CrawlingFunctionsBBC
                     {
                         if (item.InnerText.Trim() != "")
                         {
-                            concatenateParagraphs.AppendLine(HtmlEntity.DeEntitize(item.InnerText.Trim()));
+                            concatenateParagraphs.AppendLine(HtmlEntity.DeEntitize(Regex.Replace(item.InnerText.Trim(), @"\s+", " ")));
                         }
                     }
                 }
