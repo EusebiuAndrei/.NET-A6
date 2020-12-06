@@ -2,7 +2,6 @@
 using HtmlAgilityPack;
 using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
@@ -24,7 +23,7 @@ namespace CrawlerAPI.CrawlingFunctionsABCNews
             foreach(var section in sections)
             {
                 var descendantA = section.Descendants("a").FirstOrDefault();
-                var title = descendantA.InnerText;
+                var title = HtmlEntity.DeEntitize(descendantA.InnerText);
                 var sourceLink = descendantA.ChildAttributes("href").FirstOrDefault().Value;
                 var newsHtml = await httpClient.GetStringAsync(sourceLink);
                 var newsHtmlDocument = new HtmlDocument();

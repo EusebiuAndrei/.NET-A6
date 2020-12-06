@@ -64,6 +64,14 @@ namespace CrawlerAPI.CrawlingFunctionsBBC
                 var textElements = new string[]{"h1", "h2", "h3", "h4", "h5", "h6", "p", "li"};
                 foreach (var item in article.DescendantsAndSelf())
                 {
+                    if (item.Name == "header" || item.ParentNode.Name == "header")
+                    {
+                        continue;
+                    }
+                    if(item.Id.Contains("comments"))
+                    {
+                        break;
+                    }
                     if (textElements.Contains(item.Name))
                     {
                         if (item.InnerText.Trim() != "")
