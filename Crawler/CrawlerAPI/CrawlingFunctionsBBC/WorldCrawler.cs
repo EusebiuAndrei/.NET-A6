@@ -8,7 +8,7 @@ namespace CrawlerAPI.CrawlingFunctionsBBC
     {
         public static async Task<List<News>> GetWorldNews()
         {
-            return await Crawler.StartCrawlerAsync("https://www.bbc.co.uk/news/world", new string[] {"gel-layout__item gel-1/4@xl gs-u-display-flex@xl", "gel-layout__item gel-1/1@m gel-1/3@xl gel-1/1@l gel-1/3@xxl nw-o-keyline nw-o-no-keyline@l"}, "h3", "world");
+            return await Crawler.StartCrawlerAsync("https://www.bbc.co.uk/news/world", new string[] { "gel-layout__item gs-u-pb+@m gel-1/3@m gel0-1/4@xl gel-1/3@xxl nw-o-keyline nw-o-no-keyline@m", "gel-layout__item gs-u-pb+@m gel-1/3@m gel-1/4@xl gel-1/3@xxl nw-o-keyline nw-o-no-keyline@m" }, "world");
         }
     }
 }

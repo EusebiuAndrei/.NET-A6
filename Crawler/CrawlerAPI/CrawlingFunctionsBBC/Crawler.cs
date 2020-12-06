@@ -12,7 +12,7 @@ namespace CrawlerAPI.CrawlingFunctionsBBC
 {
     public static class Crawler
     {
-        public static async Task<List<News>> StartCrawlerAsync(string url, string[] newsDivsClasses, string titleType, string subject)
+        public static async Task<List<News>> StartCrawlerAsync(string url, string[] newsDivsClasses, string subject)
         {
             List<News> newsList = new List<News>();
             var httpClient = new HttpClient();
@@ -26,55 +26,57 @@ namespace CrawlerAPI.CrawlingFunctionsBBC
             }
             foreach (var div in divs)
             {
-                string title = "";
-                if(titleType == "data-bbc-title")
-                {
-                    var innerDiv = div.Descendants("div").FirstOrDefault();
-                    title = HtmlEntity.DeEntitize(innerDiv.ChildAttributes("data-bbc-title").FirstOrDefault().Value);
-                }
-                else
-                {
-                    if(titleType == "h3")
-                    {
-                        title = HtmlEntity.DeEntitize(div.Descendants("h3").FirstOrDefault().InnerText);
-                    }
-                }
-                var sourceLink = div.Descendants("a").FirstOrDefault().ChildAttributes("href").FirstOrDefault().Value;
+                string title = HtmlEntity.DeEntitize(div.Descendants("h3").FirstOrDefault().InnerText);
+                Console.WriteLine(title);
+                var descendantA = div.Descendants("a").FirstOrDefault();
+                var sourceLink = descendantA.ChildAttributes("href").FirstOrDefault().Value;
                 if (!sourceLink.StartsWith("https://www.bbc.co.uk"))
                 {
                     sourceLink = "https://www.bbc.co.uk" + sourceLink;
                 }
-
+                try
+                {
+                    if(descendantA.Descendants("span").FirstOrDefault().ChildAttributes("class").FirstOrDefault().Value == "gs-o-bullet gs-c-live-pulse gs-c-live-pulse--sport gs-u-mr")
+                    {
+                        continue;
+                    }
+                }
+                catch(Exception e)
+                {
+                    Console.WriteLine(e);
+                }
                 var newsHtml = await httpClient.GetStringAsync(sourceLink);
                 var newsHtmlDocument = new HtmlDocument();
                 newsHtmlDocument.LoadHtml(newsHtml);
-                var article = newsHtmlDocument.DocumentNode.Descendants("article").FirstOrDefault();
+                HtmlNode article;
+                try
+                {
+                    article = newsHtmlDocument.DocumentNode.Descendants("article").Where(node => !node.GetAttributeValue("class", "").Contains("sp-c-fixture")).FirstOrDefault();
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                    continue;
+                }
                 var date = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss");
                 try
                 {
                     date = article.Descendants("time").FirstOrDefault().ChildAttributes("datetime").FirstOrDefault().Value;
+                    Console.WriteLine(date);
                 }
                 catch (Exception e)
                 {
                     Console.WriteLine(e);
                 }
                 StringBuilder concatenateParagraphs = new StringBuilder();
+                var textElements = new string[]{"h1", "h2", "h3", "h4", "h5", "h6", "p", "li"};
                 foreach (var item in article.DescendantsAndSelf())
                 {
-                    try
+                    if (textElements.Contains(item.Name))
                     {
-                        if (item.ChildAttributes("id").FirstOrDefault().Value == "view-comments")
+                        if (item.InnerText.Trim() != "")
                         {
-                            break;
-                        }
-                    }catch(Exception e)
-                    {
-                    }
-                    if (item.NodeType == HtmlNodeType.Text)
-                    {
-                        if (item.InnerText.Trim() != "" && !item.InnerText.StartsWith("."))
-                        {
-                            concatenateParagraphs.Append(HtmlEntity.DeEntitize(item.InnerText.Trim()));
+                            concatenateParagraphs.AppendLine(HtmlEntity.DeEntitize(item.InnerText.Trim()));
                         }
                     }
                 }
