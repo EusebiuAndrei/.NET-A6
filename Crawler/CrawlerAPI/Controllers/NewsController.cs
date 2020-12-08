@@ -114,5 +114,11 @@ namespace CrawlerAPI.Controllers
             return await TechnologyCrawlerTheNewYorkTimes.GetTechnologyNews();
         }
 
+
+        [HttpGet("cbsnews/science")]
+        public async Task<ActionResult<List<News>>> GetScienceNewsFromCBSNews()
+        {
+            return await ScienceCrawlerCBS.GetScienceNews();
+        }
     }
 }
