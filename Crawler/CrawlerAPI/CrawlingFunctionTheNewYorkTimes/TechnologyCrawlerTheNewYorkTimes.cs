@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CrawlerAPI.CrawlingFunctionTheNewYorkTimes
 {
-    public class TechnologyCrawlerTheNewYorkTimes
+    public static class TechnologyCrawlerTheNewYorkTimes
     {
         public static async Task<List<News>> GetTechnologyNews()
         {
