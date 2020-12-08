@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using CrawlerAPI.CrawlingFunctionsABCNews;
 using CrawlerAPI.CrawlingFunctionsBBC;
+using CrawlerAPI.CrawlingFunctionTheNewYorkTimes;
 using CrawlerAPI.NewsModel;
 using Microsoft.AspNetCore.Mvc;
 
@@ -94,5 +95,24 @@ namespace CrawlerAPI.Controllers
         {
             return await EntertainmentCrawlerABCNews.GetEntertainmentNews();
         }
+
+        [HttpGet("thenewyorktimesnews/politics")]
+        public async Task<ActionResult<List<News>>> GetPoliticsNewsFromTheNewYorkTimes()
+        {
+            return await PoliticsCrawlerTheNewYorkTimes.GetPoliticsNews();
+        }
+
+        [HttpGet("thenewyorktimesnews/business")]
+        public async Task<ActionResult<List<News>>> GetBusinessNewsFromTheNewYorkTimes()
+        {
+            return await BusinessCrawlerTheNewYorkTimes.GetBusinessNews();
+        }
+
+        [HttpGet("thenewyorktimesnews/technology")]
+        public async Task<ActionResult<List<News>>> GetTechnologyNewsFromTheNewYorkTimes()
+        {
+            return await TechnologyCrawlerTheNewYorkTimes.GetTechnologyNews();
+        }
+
     }
 }
