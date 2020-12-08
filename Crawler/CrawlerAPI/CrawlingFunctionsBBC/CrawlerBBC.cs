@@ -43,7 +43,7 @@ namespace CrawlerAPI.CrawlingFunctionsBBC
                 }
                 catch(Exception e)
                 {
-                    Console.WriteLine(e);
+                    //Console.WriteLine(e);
                 }
                 var newsHtml = await httpClient.GetStringAsync(sourceLink);
                 var newsHtmlDocument = new HtmlDocument();
@@ -57,7 +57,7 @@ namespace CrawlerAPI.CrawlingFunctionsBBC
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine(e);
+                    //Console.WriteLine(e);
                     continue;
                 }
                 StringBuilder concatenateParagraphs = new StringBuilder();

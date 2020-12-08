@@ -37,7 +37,7 @@ namespace CrawlerAPI.CrawlingFunctionsABCNews
                 }
                 catch(Exception e)
                 {
-                    Console.WriteLine(e);
+                    //Console.WriteLine(e);
                     continue;
                 }
                 var sectionContent = article.Descendants("section").Where(node => node.GetAttributeValue("class", "").Equals("Article__Content story")).FirstOrDefault();
