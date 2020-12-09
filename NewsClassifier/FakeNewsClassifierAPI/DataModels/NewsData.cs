@@ -14,7 +14,7 @@ namespace FakeNewsClassifierAPI.DataModels
         [LoadColumn(1)]
         public string Text { get; set; }
 
-        [LoadColumn(4)]
+        [LoadColumn(2)]
         [LoadColumnName("Label")]
         public bool Classified { get; set; }
     }

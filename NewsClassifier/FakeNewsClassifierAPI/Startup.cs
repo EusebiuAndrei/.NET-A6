@@ -27,7 +27,7 @@ namespace FakeNewsClassifierAPI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddPredictionEnginePool<NewsData, NewsPrediction>().FromFile(modelName: "FakeNewsClassifierModels", filePath: "MLModels/news.zip", watchForChanges: true);
+            services.AddPredictionEnginePool<NewsData, NewsPrediction>().FromFile(modelName: "FakeNewsClassifierModels", filePath: "MLModels/pickle_NB_model.pkl", watchForChanges: true);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
