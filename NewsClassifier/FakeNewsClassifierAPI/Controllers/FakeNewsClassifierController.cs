@@ -12,12 +12,12 @@ namespace FakeNewsClassifierAPI.Controllers
     {
         private const string T = "True";
         private const string F = "Fake";
-        /*private readonly PredictionEnginePool<NewsData, NewsPrediction> _predictionEnginePool;*/
+        private readonly PredictionEnginePool<NewsData, NewsPrediction> _predictionEnginePool;
 
-        /*public FakeNewsClassifierController(PredictionEnginePool<NewsData, NewsPrediction> predictionEnginePool)
+        public FakeNewsClassifierController(PredictionEnginePool<NewsData, NewsPrediction> predictionEnginePool)
         {
             this._predictionEnginePool = predictionEnginePool;
-        }*/
+        }
 
         [HttpPost]
         public ActionResult<string> Post([FromBody] NewsData data)
@@ -27,7 +27,7 @@ namespace FakeNewsClassifierAPI.Controllers
                 return BadRequest();
             }
 
-            NewsPrediction predictedValue = ConsumeModel.Predict(data);
+            NewsPrediction predictedValue = _predictionEnginePool.Predict(modelName: "FakeNewsClassifierModels", example: data);
 
             string news = Convert.ToBoolean(predictedValue.Prediction) ? T : F;
 

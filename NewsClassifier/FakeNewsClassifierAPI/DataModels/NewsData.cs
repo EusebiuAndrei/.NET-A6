@@ -20,7 +20,7 @@ namespace FakeNewsClassifierAPI.DataModels
         public string Date { get; set; }
 
 
-        [ColumnName("classified"), LoadColumn(4)]
+        [ColumnName("classified"), LoadColumn(4), LoadColumnName("Label")]
         public string Classified { get; set; }
     }
 }

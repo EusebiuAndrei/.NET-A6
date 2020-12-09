@@ -7,6 +7,7 @@ namespace FakeNewsClassifierAPI.DataModels
     {
         [ColumnName("PredictedLabel")]
         public string Prediction { get; set; }
+        public float Probability { get; set; }
         public float[] Score { get; set; }
     }
 }
