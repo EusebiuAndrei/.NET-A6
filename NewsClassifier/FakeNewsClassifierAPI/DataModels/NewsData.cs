@@ -1,21 +1,26 @@
 ﻿using Microsoft.ML.Data;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace FakeNewsClassifierAPI.DataModels
 {
     public class NewsData
     {
-        [LoadColumn(0)]
+        [ColumnName("title"), LoadColumn(0)]
         public string Title { get; set; }
 
-        [LoadColumn(1)]
+
+        [ColumnName("text"), LoadColumn(1)]
         public string Text { get; set; }
 
-        [LoadColumn(2)]
-        [LoadColumnName("Label")]
-        public bool Classified { get; set; }
+
+        [ColumnName("subject"), LoadColumn(2)]
+        public string Subject { get; set; }
+
+
+        [ColumnName("date"), LoadColumn(3)]
+        public string Date { get; set; }
+
+
+        [ColumnName("classified"), LoadColumn(4)]
+        public string Classified { get; set; }
     }
 }

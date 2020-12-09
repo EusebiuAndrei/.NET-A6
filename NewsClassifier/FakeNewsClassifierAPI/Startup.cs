@@ -1,16 +1,11 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using FakeNewsClassifierAPI.DataModels;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.ML;
+using ML_NET_modelML.Model;
 
 namespace FakeNewsClassifierAPI
 {
@@ -27,7 +22,7 @@ namespace FakeNewsClassifierAPI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddPredictionEnginePool<NewsData, NewsPrediction>().FromFile(modelName: "FakeNewsClassifierModels", filePath: "MLModels/pickle_NB_model.pkl", watchForChanges: true);
+            /*services.AddPredictionEnginePool<NewsData, NewsPrediction>().FromFile(modelName: "FakeNewsClassifierModels", filePath: "MLModels/MLModel.zip", watchForChanges: true);*/
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
