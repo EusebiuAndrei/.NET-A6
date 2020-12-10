@@ -15,14 +15,9 @@ namespace CrawlerAPI.Controllers
         [HttpGet("bbc")]
         public async Task<ActionResult<List<News>>> GetAllNewsFromBBC()
         {
-            List<News> allNews = new List<News>();
-            allNews.AddRange(await SportCrawlerBBC.GetSportNews());
-            allNews.AddRange(await HealthCrawlerBBC.GetHealthNews());
-            allNews.AddRange(await CoronavirusCrawlerBBC.GetCoronavirusNews());
-            allNews.AddRange(await WorldCrawlerBBC.GetWorldNews());
-            allNews.AddRange(await BusinessCrawlerBBC.GetBusinessNews());
-            return allNews;
+            return await AllNewsBBC.GetNews();
         }
+
 
         [HttpGet("bbc/sport")]
         public async Task<ActionResult<List<News>>> GetSportNewsFromBBC()
@@ -57,19 +52,13 @@ namespace CrawlerAPI.Controllers
         [HttpGet("abcnews")]
         public async Task<ActionResult<List<News>>> GetAllNewsFromABCNews()
         {
-            List<News> allNews = new List<News>();
-            allNews.AddRange(await InternationalCrawlerABCNews.GetInternationalNews());
-            allNews.AddRange(await PoliticsCrawlerABCNews.GetPoliticsNews());
-            allNews.AddRange(await SportCrawlerABCNews.GetSportNews());
-            allNews.AddRange(await TechnologyCrawlerABCNews.GetTechnologyNews());
-            allNews.AddRange(await EntertainmentCrawlerABCNews.GetEntertainmentNews());
-            return allNews;
+            return await AllNewsABC.GetNews();
         }
 
-        [HttpGet("abcnews/international")]
+        [HttpGet("abcnews/world")]
         public async Task<ActionResult<List<News>>> GetInternationalNewsFromABCNews()
         {
-            return await InternationalCrawlerABCNews.GetInternationalNews();
+            return await WorldCrawlerABCNews.GetWorldNews();
         }
 
         [HttpGet("abcnews/politics")]
@@ -99,13 +88,7 @@ namespace CrawlerAPI.Controllers
         [HttpGet("thenewyorktimes")]
         public async Task<ActionResult<List<News>>> GetAllNewsFromTheNewYorkTimesNews()
         {
-            List<News> allNews = new List<News>();
-            allNews.AddRange(await PoliticsCrawlerTheNewYorkTimes.GetPoliticsNews());
-            allNews.AddRange(await BusinessCrawlerTheNewYorkTimes.GetBusinessNews());
-            allNews.AddRange(await TechnologyCrawlerTheNewYorkTimes.GetTechnologyNews());
-            allNews.AddRange(await HealthCrawlerTheNewYorkTimes.GetHealthNews());
-            allNews.AddRange(await SportCrawlerTheNewYorkTimes.GetSportNews());
-            return allNews;
+            return await AllNewsNYTimes.GetNews();
         }
 
         [HttpGet("thenewyorktimesnews/politics")]
@@ -138,10 +121,85 @@ namespace CrawlerAPI.Controllers
             return await SportCrawlerTheNewYorkTimes.GetSportNews();
         }
 
-        [HttpGet("cbsnews/science")]
-        public async Task<ActionResult<List<News>>> GetScienceNewsFromCBSNews()
+        [HttpGet]
+        public async Task<ActionResult<List<News>>> GetAllNews()
         {
-            return await ScienceCrawlerCBS.GetScienceNews();
+            List<News> allNews = new List<News>();
+            allNews.AddRange(await AllNewsBBC.GetNews());
+            allNews.AddRange(await AllNewsABC.GetNews());
+            allNews.AddRange(await AllNewsNYTimes.GetNews());
+            return allNews;
+        }
+
+        [HttpGet("sport")]
+        public async Task<ActionResult<List<News>>> GetAllSportNews()
+        {
+            List<News> allNews = new List<News>();
+            allNews.AddRange(await SportCrawlerBBC.GetSportNews());
+            allNews.AddRange(await SportCrawlerABCNews.GetSportNews());
+            allNews.AddRange(await SportCrawlerTheNewYorkTimes.GetSportNews());
+            return allNews;
+        }
+
+        [HttpGet("business")]
+        public async Task<ActionResult<List<News>>> GetAllBusinessNews()
+        {
+            List<News> allNews = new List<News>();
+            allNews.AddRange(await BusinessCrawlerBBC.GetBusinessNews());
+            allNews.AddRange(await BusinessCrawlerTheNewYorkTimes.GetBusinessNews());
+            return allNews;
+        }
+
+        [HttpGet("coronavirus")]
+        public async Task<ActionResult<List<News>>> GetAllCoronavirusNews()
+        {
+            List<News> allNews = new List<News>();
+            allNews.AddRange(await CoronavirusCrawlerBBC.GetCoronavirusNews());
+            return allNews;
+        }
+
+        [HttpGet("health")]
+        public async Task<ActionResult<List<News>>> GetAllHealthNews()
+        {
+            List<News> allNews = new List<News>();
+            allNews.AddRange(await HealthCrawlerBBC.GetHealthNews());
+            allNews.AddRange(await HealthCrawlerTheNewYorkTimes.GetHealthNews());
+            return allNews;
+        }
+
+        [HttpGet("world")]
+        public async Task<ActionResult<List<News>>> GetAllWorldNews()
+        {
+            List<News> allNews = new List<News>();
+            allNews.AddRange(await WorldCrawlerBBC.GetWorldNews());
+            allNews.AddRange(await WorldCrawlerABCNews.GetWorldNews());
+            return allNews;
+        }
+
+        [HttpGet("entertainment")]
+        public async Task<ActionResult<List<News>>> GetAllEntertainmentNews()
+        {
+            List<News> allNews = new List<News>();
+            allNews.AddRange(await EntertainmentCrawlerABCNews.GetEntertainmentNews());
+            return allNews;
+        }
+
+        [HttpGet("politics")]
+        public async Task<ActionResult<List<News>>> GetAllPoliticsNews()
+        {
+            List<News> allNews = new List<News>();
+            allNews.AddRange(await PoliticsCrawlerABCNews.GetPoliticsNews());
+            allNews.AddRange(await PoliticsCrawlerTheNewYorkTimes.GetPoliticsNews());
+            return allNews;
+        }
+
+        [HttpGet("technology")]
+        public async Task<ActionResult<List<News>>> GetAllTechnologyNews()
+        {
+            List<News> allNews = new List<News>();
+            allNews.AddRange(await TechnologyCrawlerABCNews.GetTechnologyNews());
+            allNews.AddRange(await TechnologyCrawlerTheNewYorkTimes.GetTechnologyNews());
+            return allNews;
         }
     }
 }

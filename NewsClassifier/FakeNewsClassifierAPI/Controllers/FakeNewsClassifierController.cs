@@ -1,8 +1,5 @@
-﻿using System;
-using FakeNewsClassifierAPI.DataModels;
+﻿using FakeNewsClassifierAPI.DataModels;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.ML;
-using ML_NET_modelML.Model;
 
 namespace FakeNewsClassifierAPI.Controllers
 {
@@ -10,13 +7,9 @@ namespace FakeNewsClassifierAPI.Controllers
     [ApiController]
     public class FakeNewsClassifierController : ControllerBase
     {
-        private const string T = "True";
-        private const string F = "Fake";
-        private readonly PredictionEnginePool<NewsData, NewsPrediction> _predictionEnginePool;
 
-        public FakeNewsClassifierController(PredictionEnginePool<NewsData, NewsPrediction> predictionEnginePool)
+        public FakeNewsClassifierController()
         {
-            this._predictionEnginePool = predictionEnginePool;
         }
 
         [HttpPost]
@@ -27,9 +20,9 @@ namespace FakeNewsClassifierAPI.Controllers
                 return BadRequest();
             }
 
-            NewsPrediction predictedValue = _predictionEnginePool.Predict(modelName: "FakeNewsClassifierModels", example: data);
+            NewsPrediction predictedValue = ConsumeModel.Predict(data);
 
-            string news = Convert.ToBoolean(predictedValue.Prediction) ? T : F;
+            string news = predictedValue.Prediction;
 
             return Ok(news);
         }

@@ -1,9 +1,8 @@
-using System;
-using System.IO;
-using FakeNewsClassifierAPI.DataModels;
+﻿using System;
 using Microsoft.ML;
+using System.IO;
 
-namespace ML_NET_modelML.Model
+namespace FakeNewsClassifierAPI.DataModels
 {
     public class ConsumeModel
     {
@@ -12,16 +11,21 @@ namespace ML_NET_modelML.Model
         public static NewsPrediction Predict(NewsData input)
         {
             NewsPrediction result = PredictionEngine.Value.Predict(input);
+            Console.WriteLine(result.Prediction);
+            foreach(var item in result.Score)
+            {
+                Console.WriteLine(item);
+            }
             return result;
         }
 
         public static PredictionEngine<NewsData, NewsPrediction> CreatePredictionEngine()
         {
             MLContext mlContext = new MLContext();
-            string modelPath = Path.Combine(Environment.CurrentDirectory, @"MLModels", "MLModel.zip");
-            ITransformer mlModel = mlContext.Model.Load(modelPath, out var NewsDataSchema);
-            var predEngine = mlContext.Model.CreatePredictionEngine<NewsData, NewsPrediction>(mlModel);
 
+            string modelPath = Path.Combine(Environment.CurrentDirectory, @"MLModels", @"MLModel.zip");
+            ITransformer mlModel = mlContext.Model.Load(modelPath, out var modelInputSchema);
+            var predEngine = mlContext.Model.CreatePredictionEngine<NewsData, NewsPrediction>(mlModel, modelInputSchema);
             return predEngine;
         }
     }

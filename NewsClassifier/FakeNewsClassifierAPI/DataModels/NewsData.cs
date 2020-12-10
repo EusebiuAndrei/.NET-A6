@@ -11,7 +11,6 @@ namespace FakeNewsClassifierAPI.DataModels
         [ColumnName("text"), LoadColumn(1)]
         public string Text { get; set; }
 
-
         [ColumnName("subject"), LoadColumn(2)]
         public string Subject { get; set; }
 
@@ -20,7 +19,8 @@ namespace FakeNewsClassifierAPI.DataModels
         public string Date { get; set; }
 
 
-        [ColumnName("classified"), LoadColumn(4), LoadColumnName("Label")]
+        [ColumnName("classified"), LoadColumn(4)]
+        [LoadColumnName("Label")]
         public string Classified { get; set; }
     }
 }
