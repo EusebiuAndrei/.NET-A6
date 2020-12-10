@@ -1,3 +1,9 @@
+using System.Diagnostics.Tracing;
+using System.Linq.Expressions;
+using System.Net.Http.Headers;
+using System;
+using System.Xml;
+using System.Reflection.Metadata;
 using System.Globalization;
 using System.Runtime.CompilerServices;
 using API.Entities;
@@ -32,6 +38,8 @@ namespace API.Data
                 entity.Text = news.Text;
                 entity.SourceLink = news.SourceLink;
                 entity.ClassifiedAs = news.ClassifiedAs;
+                entity.Views = news.Views;
+                entity.Read = news.Read;
             }
 
             this.context.SaveChanges();

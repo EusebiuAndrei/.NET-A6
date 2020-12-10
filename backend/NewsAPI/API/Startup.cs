@@ -26,7 +26,6 @@ namespace API
             {
                 // options.UseSqlite(_config.GetConnectionString("DefaultConnection"));
                 options.UseSqlServer(_config.GetConnectionString("CloudConnection"));
-                // options.UseSqlServer(@"Data Source=fake-news.database.windows.net;Initial Catalog=fake-news-a6;Uid=ochii-din-umbra-admin;Password=DotNetA6;Trusted_Connection=True;");
             });
             services.AddScoped<INewsRepository, NewsRepository>();
             services.AddScoped<ITopicRepository, TopicRepository>();
