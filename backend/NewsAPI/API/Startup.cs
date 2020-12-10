@@ -1,3 +1,4 @@
+using System.ComponentModel.Design;
 using System.Linq;
 using API.Data;
 using Microsoft.AspNetCore.Builder;
@@ -23,7 +24,8 @@ namespace API
         {
             services.AddDbContext<DataContext>(options =>
             {
-                options.UseSqlite(_config.GetConnectionString("DefaultConnection"));
+                // options.UseSqlite(_config.GetConnectionString("DefaultConnection"));
+                options.UseSqlServer(_config.GetConnectionString("CloudConnection"));
             });
             services.AddScoped<INewsRepository, NewsRepository>();
             services.AddScoped<ITopicRepository, TopicRepository>();
