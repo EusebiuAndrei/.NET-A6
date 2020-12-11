@@ -13,7 +13,8 @@ namespace API.Entities
         public Int16 ClassifiedAs { get; set; }
         public int Views { get; set; }
         public int Read { get; set; }
+        public int TopicId { get; set; }
 
-        public virtual NewsTopic newsTopic { get; set; }
+        public virtual Topic Topic { get; set; }
     }
 }
