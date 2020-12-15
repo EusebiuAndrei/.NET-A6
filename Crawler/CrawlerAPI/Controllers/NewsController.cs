@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using CrawlerAPI.CrawlingFunctionsABCNews;
 using CrawlerAPI.CrawlingFunctionsBBC;
@@ -12,6 +13,7 @@ namespace CrawlerAPI.Controllers
     [ApiController]
     public class NewsController : ControllerBase
     {
+        public NewsController() { }
         [HttpGet("bbc")]
         public async Task<ActionResult<List<News>>> GetAllNewsFromBBC()
         {

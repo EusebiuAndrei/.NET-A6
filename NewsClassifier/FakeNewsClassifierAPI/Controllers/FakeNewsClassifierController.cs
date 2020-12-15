@@ -1,5 +1,6 @@
 ﻿using FakeNewsClassifierAPI.DataModels;
 using Microsoft.AspNetCore.Mvc;
+using System;
 
 namespace FakeNewsClassifierAPI.Controllers
 {
@@ -8,9 +9,7 @@ namespace FakeNewsClassifierAPI.Controllers
     public class FakeNewsClassifierController : ControllerBase
     {
 
-        public FakeNewsClassifierController()
-        {
-        }
+        public FakeNewsClassifierController(){}
 
         [HttpPost]
         public ActionResult<string> Post([FromBody] NewsData data)

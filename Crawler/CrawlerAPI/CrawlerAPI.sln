@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30503.244
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrawlerAPI", "CrawlerAPI.csproj", "{211F97A3-F8D4-487B-AE1F-8779CA2445F8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CrawlerAPI", "CrawlerAPI.csproj", "{211F97A3-F8D4-487B-AE1F-8779CA2445F8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrawlerAPI.Tests", "..\CrawlerAPI.Tests\CrawlerAPI.Tests.csproj", "{6F46DC79-EA12-44F9-8C7A-CF0FFCDFE659}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{211F97A3-F8D4-487B-AE1F-8779CA2445F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{211F97A3-F8D4-487B-AE1F-8779CA2445F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{211F97A3-F8D4-487B-AE1F-8779CA2445F8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F46DC79-EA12-44F9-8C7A-CF0FFCDFE659}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F46DC79-EA12-44F9-8C7A-CF0FFCDFE659}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F46DC79-EA12-44F9-8C7A-CF0FFCDFE659}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F46DC79-EA12-44F9-8C7A-CF0FFCDFE659}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
