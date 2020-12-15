@@ -2,8 +2,8 @@ using System.Reflection.Emit;
 using System.Xml;
 using System;
 using System.Security.Principal;
-using API.Entities;
 using Microsoft.EntityFrameworkCore;
+using API.Entities;
 
 namespace API.Data
 {
@@ -17,8 +17,8 @@ namespace API.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder) {
 
             modelBuilder.Entity<Topic>()
-                .HasOne<News>(t => t.Topic)
-                .WithOne(nt => nt.News)
+                .HasOne<News>(t => t.News)
+                .WithOne(nt => nt.Topic)
                 .HasForeignKey<News>(nt => nt.TopicId);
         }
     }
