@@ -11,11 +11,6 @@ namespace FakeNewsClassifierAPI.DataModels
         public static NewsPrediction Predict(NewsData input)
         {
             NewsPrediction result = PredictionEngine.Value.Predict(input);
-            Console.WriteLine(result.Prediction);
-            foreach(var item in result.Score)
-            {
-                Console.WriteLine(item);
-            }
             return result;
         }
 
