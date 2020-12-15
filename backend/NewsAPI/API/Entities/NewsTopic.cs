@@ -11,7 +11,7 @@ namespace API.Entities
         public int NewsId { get; set; }
         public int TopicId { get; set; }
 
-        public virtual News news { get; set; }
-        public virtual Topic topic { get; set; }
+        public virtual News News { get; set; }
+        public virtual Topic Topic { get; set; }
     }
 }

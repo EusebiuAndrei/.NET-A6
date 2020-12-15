@@ -9,6 +9,7 @@ using System.Runtime.CompilerServices;
 using API.Entities;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace API.Data
 {
@@ -47,7 +48,7 @@ namespace API.Data
 
         public IEnumerable<News> GetAll()
         {
-            return this.context.News.ToList();
+            return this.context.News.Include(n => n.Topic).AsNoTracking().ToList();
         }
 
         public News GetById(int id)

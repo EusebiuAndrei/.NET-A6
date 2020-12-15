@@ -1,10 +1,9 @@
 using System;
-using System.ComponentModel.DataAnnotations;
+using API.Entities;
 
-namespace API.Entities
+namespace API.Views
 {
-    public class News
-    {
+    public class NewsViewModel {
         public int Id { get; set; }
         public string Title { get; set; }
         public DateTime Date { get; set; }
@@ -13,10 +12,6 @@ namespace API.Entities
         public Int16 ClassifiedAs { get; set; }
         public int Views { get; set; }
         public int Read { get; set; }
-
-        public int TopicId { get; set; }
-        public virtual Topic Topic { get; set; }
-
-        // public virtual NewsTopic NewsTopic { get; set; }
+        public Topic Topic { get; set; }
     }
 }
