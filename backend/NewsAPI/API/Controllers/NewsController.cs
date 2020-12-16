@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using API.Data;
@@ -37,6 +38,16 @@ namespace API.Controllers
             }
 
             return news;
+        }
+
+        [HttpGet("query", Name = "QueryNews")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public ActionResult<List<News>> GetQueriedNews([FromQuery] int nrOfNews, [FromQuery] string wordInTitle, 
+            [FromQuery] DateTime? fromDate, [FromQuery] DateTime? toDate, [FromQuery] Int16? classifiedAs, [FromQuery] int? topicId)
+        {
+            return _repository.GetQueriedNews(nrOfNews, wordInTitle, fromDate, toDate, classifiedAs, topicId).ToList();
         }
 
         [HttpPost]
