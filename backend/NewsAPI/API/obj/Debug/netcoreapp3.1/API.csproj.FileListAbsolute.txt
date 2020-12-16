@@ -453,3 +453,4 @@ D:\.NET-A6\backend\NewsAPI\API\obj\Debug\netcoreapp3.1\staticwebassets\API.Stati
 D:\.NET-A6\backend\NewsAPI\API\obj\Debug\netcoreapp3.1\API.dll
 D:\.NET-A6\backend\NewsAPI\API\obj\Debug\netcoreapp3.1\API.pdb
 D:\.NET-A6\backend\NewsAPI\API\obj\Debug\netcoreapp3.1\API.genruntimeconfig.cache
+C:\Fac\.NET-A6\backend\NewsAPI\API\obj\Debug\netcoreapp3.1\API.csprojAssemblyReference.cache
