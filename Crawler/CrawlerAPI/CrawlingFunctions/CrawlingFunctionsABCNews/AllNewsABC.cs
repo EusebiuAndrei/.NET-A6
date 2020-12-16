@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace CrawlerAPI.CrawlingFunctionsABCNews
+namespace CrawlerAPI.CrawlingFunctions.CrawlingFunctionsABCNews
 {
     public static class AllNewsABC
     {

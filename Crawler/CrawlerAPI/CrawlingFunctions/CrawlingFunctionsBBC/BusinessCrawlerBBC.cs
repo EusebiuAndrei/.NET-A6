@@ -1,8 +1,8 @@
-using CrawlerAPI.NewsModel;
+﻿using CrawlerAPI.NewsModel;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace CrawlerAPI.CrawlingFunctionsBBC
+namespace CrawlerAPI.CrawlingFunctions.CrawlingFunctionsBBC
 {
     public static class BusinessCrawlerBBC
     {

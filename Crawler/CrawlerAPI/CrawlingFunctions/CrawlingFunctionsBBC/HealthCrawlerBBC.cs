@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace CrawlerAPI.CrawlingFunctionsBBC
+namespace CrawlerAPI.CrawlingFunctions.CrawlingFunctionsBBC
 {
     public static class HealthCrawlerBBC
     {

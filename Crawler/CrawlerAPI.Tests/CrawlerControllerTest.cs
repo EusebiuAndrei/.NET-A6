@@ -13,13 +13,24 @@ namespace CrawlerAPI.Tests
         }
 
         [Fact]
-        public void CheckNewsListHealthBBCNews()
+        public void GivenWebsiteAndSubjectWhenGetAllNewsThenListIsNotNull()
         {
-            // Act
-            var actionResultTask = _newsController.GetHealthNewsFromBBC();
+            string website = "abcnews";
+            string subject = "politics";
+            var actionResultTask = _newsController.GetNews(website, subject);
             actionResultTask.Wait();
             var viewResult = actionResultTask.Result;
-            //Assert
+            Assert.NotNull(viewResult);
+        }
+
+        [Fact]
+        public void GivenWebsiteAndSubjectWhenGetLatestNewsThenListIsNotNull()
+        {
+            string website = "bbc";
+            string subject = "sport";
+            var actionResultTask = _newsController.GetLatestNews(website, subject);
+            actionResultTask.Wait();
+            var viewResult = actionResultTask.Result;
             Assert.NotNull(viewResult);
         }
     }

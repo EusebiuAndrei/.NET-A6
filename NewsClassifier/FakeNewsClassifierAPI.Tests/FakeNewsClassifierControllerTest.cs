@@ -45,7 +45,6 @@ namespace FakeNewsClassifierAPI.Tests
             // Act
             var result = _fakeNewsClassifierCotroller.Post(news).Value;
             // Assert
-            Debug.WriteLine(result);
             bool boolResult = result == "0" ? false : true;
             Assert.True(boolResult);
         }

@@ -1,5 +1,5 @@
 ﻿using CrawlerAPI.NewsModel;
-using HtmlAgilityPack; 
+using HtmlAgilityPack;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -9,7 +9,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace CrawlerAPI.CrawlingFunctionsBBC
+namespace CrawlerAPI.CrawlingFunctions.CrawlingFunctionsBBC
 {
     public static class CrawlerBBC
     {
@@ -21,7 +21,7 @@ namespace CrawlerAPI.CrawlingFunctionsBBC
             var htmlDocument = new HtmlDocument();
             htmlDocument.LoadHtml(html);
             var divs = htmlDocument.DocumentNode.Descendants("div").Where(node => node.GetAttributeValue("class", "").Equals(newsDivsClasses[0])).ToList();
-            for(int i = 1; i < newsDivsClasses.Length; i++)
+            for (int i = 1; i < newsDivsClasses.Length; i++)
             {
                 divs.AddRange(htmlDocument.DocumentNode.Descendants("div").Where(node => node.GetAttributeValue("class", "").Equals(newsDivsClasses[i])).ToList());
             }
@@ -36,12 +36,12 @@ namespace CrawlerAPI.CrawlingFunctionsBBC
                 }
                 try
                 {
-                    if(descendantA.Descendants("span").FirstOrDefault().ChildAttributes("class").FirstOrDefault().Value == "gs-o-bullet gs-c-live-pulse gs-c-live-pulse--sport gs-u-mr")
+                    if (descendantA.Descendants("span").FirstOrDefault().ChildAttributes("class").FirstOrDefault().Value == "gs-o-bullet gs-c-live-pulse gs-c-live-pulse--sport gs-u-mr")
                     {
                         continue;
                     }
                 }
-                catch(Exception e)
+                catch (Exception e)
                 {
                     //Console.WriteLine(e);
                 }
@@ -61,14 +61,14 @@ namespace CrawlerAPI.CrawlingFunctionsBBC
                     continue;
                 }
                 StringBuilder concatenateParagraphs = new StringBuilder();
-                var textElements = new string[]{"h1", "h2", "h3", "h4", "h5", "h6", "p", "li"};
+                var textElements = new string[] { "h1", "h2", "h3", "h4", "h5", "h6", "p", "li" };
                 foreach (var item in article.DescendantsAndSelf())
                 {
                     if (item.Name == "header" || item.ParentNode.Name == "header")
                     {
                         continue;
                     }
-                    if(item.Id.Contains("comments"))
+                    if (item.Id.Contains("comments"))
                     {
                         break;
                     }

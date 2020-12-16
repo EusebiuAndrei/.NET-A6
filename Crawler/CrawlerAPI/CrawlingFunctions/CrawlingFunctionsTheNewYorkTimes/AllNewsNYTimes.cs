@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace CrawlerAPI.CrawlingFunctionTheNewYorkTimes
+namespace CrawlerAPI.CrawlingFunctions.CrawlingFunctionsTheNewYorkTimes
 {
     public static class AllNewsNYTimes
     {

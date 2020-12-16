@@ -1,10 +1,8 @@
 ﻿using CrawlerAPI.NewsModel;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
-namespace CrawlerAPI.CrawlingFunctionTheNewYorkTimes
+namespace CrawlerAPI.CrawlingFunctions.CrawlingFunctionsTheNewYorkTimes
 {
     public static class SportCrawlerTheNewYorkTimes
     {
