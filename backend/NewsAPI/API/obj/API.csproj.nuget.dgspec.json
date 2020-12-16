@@ -1,21 +1,26 @@
 {
   "format": 1,
   "restore": {
-    "D:\\.NET Projects\\Lalala\\.NET-A6\\backend\\NewsAPI\\API\\API.csproj": {}
+    "D:\\.NET-A6\\backend\\NewsAPI\\API\\API.csproj": {}
   },
   "projects": {
-    "D:\\.NET Projects\\Lalala\\.NET-A6\\backend\\NewsAPI\\API\\API.csproj": {
+    "D:\\.NET-A6\\backend\\NewsAPI\\API\\API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\.NET Projects\\Lalala\\.NET-A6\\backend\\NewsAPI\\API\\API.csproj",
+        "projectUniqueName": "D:\\.NET-A6\\backend\\NewsAPI\\API\\API.csproj",
         "projectName": "API",
-        "projectPath": "D:\\.NET Projects\\Lalala\\.NET-A6\\backend\\NewsAPI\\API\\API.csproj",
-        "packagesPath": "C:\\Users\\euseb\\.nuget\\packages\\",
-        "outputPath": "D:\\.NET Projects\\Lalala\\.NET-A6\\backend\\NewsAPI\\API\\obj\\",
+        "projectPath": "D:\\.NET-A6\\backend\\NewsAPI\\API\\API.csproj",
+        "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
+        "outputPath": "D:\\.NET-A6\\backend\\NewsAPI\\API\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\euseb\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
