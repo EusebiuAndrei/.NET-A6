@@ -1,5 +1,6 @@
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace API.Entities
 {
@@ -15,6 +16,7 @@ namespace API.Entities
         public int Read { get; set; }
         public int TopicId { get; set; }
 
+        [JsonIgnore]
         public virtual Topic Topic { get; set; }
     }
 }
