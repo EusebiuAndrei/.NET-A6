@@ -1,26 +1,21 @@
 {
   "format": 1,
   "restore": {
-    "D:\\.NET-A6\\backend\\NewsAPI\\NewsAPI.Tests\\NewsAPI.Tests.csproj": {}
+    "C:\\Fac\\.NET-A6\\backend\\NewsAPI\\NewsAPI.Tests\\NewsAPI.Tests.csproj": {}
   },
   "projects": {
-    "D:\\.NET-A6\\backend\\NewsAPI\\API\\API.csproj": {
+    "C:\\Fac\\.NET-A6\\backend\\NewsAPI\\API\\API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\.NET-A6\\backend\\NewsAPI\\API\\API.csproj",
+        "projectUniqueName": "C:\\Fac\\.NET-A6\\backend\\NewsAPI\\API\\API.csproj",
         "projectName": "API",
-        "projectPath": "D:\\.NET-A6\\backend\\NewsAPI\\API\\API.csproj",
-        "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
-        "outputPath": "D:\\.NET-A6\\backend\\NewsAPI\\API\\obj\\",
+        "projectPath": "C:\\Fac\\.NET-A6\\backend\\NewsAPI\\API\\API.csproj",
+        "packagesPath": "C:\\Users\\a\\.nuget\\packages\\",
+        "outputPath": "C:\\Fac\\.NET-A6\\backend\\NewsAPI\\API\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\a\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
@@ -112,23 +107,18 @@
         }
       }
     },
-    "D:\\.NET-A6\\backend\\NewsAPI\\NewsAPI.Tests\\NewsAPI.Tests.csproj": {
+    "C:\\Fac\\.NET-A6\\backend\\NewsAPI\\NewsAPI.Tests\\NewsAPI.Tests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\.NET-A6\\backend\\NewsAPI\\NewsAPI.Tests\\NewsAPI.Tests.csproj",
+        "projectUniqueName": "C:\\Fac\\.NET-A6\\backend\\NewsAPI\\NewsAPI.Tests\\NewsAPI.Tests.csproj",
         "projectName": "NewsAPI.Tests",
-        "projectPath": "D:\\.NET-A6\\backend\\NewsAPI\\NewsAPI.Tests\\NewsAPI.Tests.csproj",
-        "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
-        "outputPath": "D:\\.NET-A6\\backend\\NewsAPI\\NewsAPI.Tests\\obj\\",
+        "projectPath": "C:\\Fac\\.NET-A6\\backend\\NewsAPI\\NewsAPI.Tests\\NewsAPI.Tests.csproj",
+        "packagesPath": "C:\\Users\\a\\.nuget\\packages\\",
+        "outputPath": "C:\\Fac\\.NET-A6\\backend\\NewsAPI\\NewsAPI.Tests\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\a\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
@@ -140,8 +130,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "D:\\.NET-A6\\backend\\NewsAPI\\API\\API.csproj": {
-                "projectPath": "D:\\.NET-A6\\backend\\NewsAPI\\API\\API.csproj"
+              "C:\\Fac\\.NET-A6\\backend\\NewsAPI\\API\\API.csproj": {
+                "projectPath": "C:\\Fac\\.NET-A6\\backend\\NewsAPI\\API\\API.csproj"
               }
             }
           }
@@ -155,13 +145,9 @@
       "frameworks": {
         "netcoreapp3.1": {
           "dependencies": {
-            "Microsoft.NET.Test.Sdk": {
+            "Moq": {
               "target": "Package",
-              "version": "[16.5.0, )"
-            },
-            "coverlet.collector": {
-              "target": "Package",
-              "version": "[1.2.0, )"
+              "version": "[4.15.2, )"
             },
             "xunit": {
               "target": "Package",
