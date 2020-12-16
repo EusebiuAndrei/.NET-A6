@@ -69,5 +69,17 @@ namespace FakeNewsClassifierAPI.Tests
             Assert.Equal(valueExpected, valueReturned);
 
         }
+        [Fact]
+        public void GivenFakeNewsWhenPostThenCheckTypeResult()
+        {
+            // Act
+            var result = _fakeNewsClassifierController.Post(fakeNews).Result as OkObjectResult;
+            var valueReturned = result.Value;
+            var valueExpected = "0";
+
+            // Assert
+            Assert.Equal(valueExpected.GetType(), valueReturned.GetType());
+
+        }
     }
 }
