@@ -66,13 +66,13 @@ namespace CrawlerAPI.CrawlingFunctions
             return await _mappingMethods[website][subject]();
         }
 
-        public async Task<List<News>> GetLatestNewsFromWebsiteWithSubject(string website, string subject)
+        public async Task<List<News>> GetLatestNewsFromWebsiteWithSubject(string website, string subject, int hoursNumber)
         {
             var allNewsList = await _mappingMethods[website][subject]();
             List<News> filteredList = new List<News>();
             foreach(var news in allNewsList)
             {
-                if (Int32.Parse(news.Date.ToString("HH")) >= Int32.Parse(DateTime.Now.ToString("HH")) - 3 && Int32.Parse(news.Date.ToString("HH")) <= Int32.Parse(DateTime.Now.ToString("HH")))
+                if (Int32.Parse(news.Date.ToString("HH")) >= Int32.Parse(DateTime.Now.ToString("HH")) - hoursNumber && Int32.Parse(news.Date.ToString("HH")) <= Int32.Parse(DateTime.Now.ToString("HH")))
                 {
                     filteredList.Add(news);
                 }

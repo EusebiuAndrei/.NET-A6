@@ -20,10 +20,10 @@ namespace CrawlerAPI.Controllers
         }
 
         [HttpGet("latest-news")]
-        public async Task<ActionResult<List<News>>> GetLatestNews(string website = "all", string subject = "all")
+        public async Task<ActionResult<List<News>>> GetLatestNews(string website = "all", string subject = "all", int hoursNumber = 3)
         {
             MappingCrawlingMethods mapping = new MappingCrawlingMethods();
-            return await mapping.GetLatestNewsFromWebsiteWithSubject(website, subject);
+            return await mapping.GetLatestNewsFromWebsiteWithSubject(website, subject, hoursNumber);
         }
     }
 }
