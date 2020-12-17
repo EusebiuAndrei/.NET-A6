@@ -63,7 +63,7 @@ namespace API.Data
             return _context.News.Find(id);
         }
 
-        public IEnumerable<News> GetQueriedNews(int nrOfNews, string wordInTitle, 
+        public IEnumerable<News> GetQueriedNews(int pageNumber, int nrOfNews, string wordInTitle, 
             DateTime? fromDate, DateTime? toDate, Int16? classifiedAs, int? topicId)
         {
             IEnumerable<News> query = _context.News.Include(n => n.Topic).AsNoTracking();
@@ -80,7 +80,7 @@ namespace API.Data
             if (topicId.HasValue)
                 query = query.Where(n => (n.TopicId == topicId));
 
-            return query.Take(nrOfNews);
+            return query.OrderBy(n => n.Id).Skip((pageNumber - 1) * nrOfNews).Take(nrOfNews);
         }
 
         public void Remove(int id)
