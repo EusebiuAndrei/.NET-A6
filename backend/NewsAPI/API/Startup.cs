@@ -1,4 +1,3 @@
-using System.ComponentModel.Design;
 using System.Linq;
 using API.Data;
 using Microsoft.AspNetCore.Builder;
@@ -9,6 +8,11 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using Microsoft.OpenApi.Models;
+using API.Authentication;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 namespace API
 {
@@ -27,6 +31,30 @@ namespace API
                 // options.UseSqlite(_config.GetConnectionString("DefaultConnection"));
                 options.UseSqlServer(_config.GetConnectionString("CloudConnection"));
             });
+
+            services.AddIdentity<ApplicationUser, IdentityRole>()
+                .AddEntityFrameworkStores<DataContext>()
+                .AddDefaultTokenProviders();
+            services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+            .AddJwtBearer(options =>
+            {
+                options.SaveToken = true;
+                options.RequireHttpsMetadata = false;
+                options.TokenValidationParameters = new TokenValidationParameters()
+                {
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidAudience = _config["JWT:ValidAudience"],
+                    ValidIssuer = _config["JWT:ValidIssuer"],
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["JWT:Secret"]))
+                };
+            });
+
             services.AddScoped<INewsRepository, NewsRepository>();
             services.AddScoped<ITopicRepository, TopicRepository>();
 
@@ -88,7 +116,7 @@ namespace API
             app.UseRouting();
 
             app.UseCors("MyPolicy");
-
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

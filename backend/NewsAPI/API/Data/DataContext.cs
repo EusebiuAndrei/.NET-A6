@@ -1,13 +1,11 @@
-using System.Reflection.Emit;
-using System.Xml;
-using System;
-using System.Security.Principal;
 using Microsoft.EntityFrameworkCore;
 using API.Entities;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using API.Authentication;
 
 namespace API.Data
 {
-    public class DataContext : DbContext
+    public class DataContext : IdentityDbContext<ApplicationUser>
     {
         public DataContext()
         {
@@ -19,7 +17,7 @@ namespace API.Data
         public DbSet<Topic> Topic { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder) {
-
+            base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<Topic>()
                 .HasOne<News>(t => t.News)
                 .WithOne(nt => nt.Topic)

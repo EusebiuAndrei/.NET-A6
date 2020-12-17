@@ -1,4 +1,4 @@
-﻿namespace AuthenticationAPI.Authentication
+﻿namespace API.Authentication
 {
     public class Response
     {
