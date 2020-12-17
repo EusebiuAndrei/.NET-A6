@@ -9215,20 +9215,25 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\a\\.nuget\\packages\\": {}
+    "C:\\Users\\user\\.nuget\\packages\\": {},
+    "C:\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Fac\\.NET-A6\\backend\\NewsAPI\\NewsAPI.Tests\\NewsAPI.Tests.csproj",
+      "projectUniqueName": "D:\\ANUL3\\semestrul1\\.NET\\OchiiDinUmbra\\backend\\NewsAPI\\NewsAPI.Tests\\NewsAPI.Tests.csproj",
       "projectName": "NewsAPI.Tests",
-      "projectPath": "C:\\Fac\\.NET-A6\\backend\\NewsAPI\\NewsAPI.Tests\\NewsAPI.Tests.csproj",
-      "packagesPath": "C:\\Users\\a\\.nuget\\packages\\",
-      "outputPath": "C:\\Fac\\.NET-A6\\backend\\NewsAPI\\NewsAPI.Tests\\obj\\",
+      "projectPath": "D:\\ANUL3\\semestrul1\\.NET\\OchiiDinUmbra\\backend\\NewsAPI\\NewsAPI.Tests\\NewsAPI.Tests.csproj",
+      "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
+      "outputPath": "D:\\ANUL3\\semestrul1\\.NET\\OchiiDinUmbra\\backend\\NewsAPI\\NewsAPI.Tests\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Microsoft\\Xamarin\\NuGet\\"
+      ],
       "configFilePaths": [
-        "C:\\Users\\a\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
@@ -9240,8 +9245,8 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "C:\\Fac\\.NET-A6\\backend\\NewsAPI\\API\\API.csproj": {
-              "projectPath": "C:\\Fac\\.NET-A6\\backend\\NewsAPI\\API\\API.csproj"
+            "D:\\ANUL3\\semestrul1\\.NET\\OchiiDinUmbra\\backend\\NewsAPI\\API\\API.csproj": {
+              "projectPath": "D:\\ANUL3\\semestrul1\\.NET\\OchiiDinUmbra\\backend\\NewsAPI\\API\\API.csproj"
             }
           }
         }
