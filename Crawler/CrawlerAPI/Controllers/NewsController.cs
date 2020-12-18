@@ -2,12 +2,10 @@
 using System.Threading.Tasks;
 using CrawlerAPI.CrawlingFunctions;
 using CrawlerAPI.NewsModel;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CrawlerAPI.Controllers
 {
-    [Authorize]
     [Route("api/v1")]
     [ApiController]
     public class NewsController : ControllerBase
