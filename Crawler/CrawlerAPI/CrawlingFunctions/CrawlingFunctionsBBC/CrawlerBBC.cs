@@ -45,6 +45,37 @@ namespace CrawlerAPI.CrawlingFunctions.CrawlingFunctionsBBC
                 {
                     //Console.WriteLine(e);
                 }
+                var imageSource = "";
+                try
+                {
+                    string src = "src";
+                    var img = div.Descendants("img").FirstOrDefault();
+                    if (img.Attributes.Contains("srcset"))
+                    {
+                        src = "srcset";
+                    }
+                    else
+                    {
+                        if (img.Attributes.Contains("data-src"))
+                        {
+                            src = "data-src";
+                        }
+                    }
+                    imageSource = img.ChildAttributes(src).FirstOrDefault().Value;
+                    if(imageSource.IndexOf(' ') != -1)
+                    {
+                        imageSource = imageSource.Substring(0, imageSource.IndexOf(' '));
+                    }
+                    if (imageSource.Contains("{width}"))
+                    {
+                        imageSource = imageSource.Replace("{width}", "240");
+                    }
+                }
+                catch(Exception e)
+                {
+                    //Console.WriteLine(e);
+                    continue;
+                }
                 var newsHtml = await httpClient.GetStringAsync(sourceLink);
                 var newsHtmlDocument = new HtmlDocument();
                 newsHtmlDocument.LoadHtml(newsHtml);
@@ -87,6 +118,7 @@ namespace CrawlerAPI.CrawlingFunctions.CrawlingFunctionsBBC
                     Content = concatenateParagraphs.ToString(),
                     Date = DateTime.ParseExact(date.Substring(0, 19), "yyyy-MM-ddTHH:mm:ss", CultureInfo.InvariantCulture),
                     SourceLink = sourceLink,
+                    ImageSource = imageSource
                 };
                 newsList.Add(news);
             }

@@ -9,5 +9,6 @@ namespace CrawlerAPI.NewsModel
         public string Content { get; set; }
         public DateTime Date { get; set; }
         public string SourceLink { get; set; }
+        public string ImageSource { get; set; }
     }
 }

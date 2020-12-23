@@ -29,10 +29,19 @@ namespace CrawlerAPI.CrawlingFunctions.CrawlingFunctionsTheNewYorkTimes
                 {
                     sourceLink = "https://www.nytimes.com" + sourceLink;
                 }
+                var imageSource = "";
+                try
+                {
+                    imageSource = list.Descendants("img").FirstOrDefault().ChildAttributes("src").FirstOrDefault().Value;
+                }
+                catch (Exception e)
+                {
+                    //Console.WriteLine(e);
+                    continue;
+                }
                 var newsHtml = await httpClient.GetStringAsync(sourceLink);
                 var newsHtmlDocument = new HtmlDocument();
                 newsHtmlDocument.LoadHtml(newsHtml);
-
                 HtmlNode article;
                 var date = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss");
                 try
@@ -66,6 +75,7 @@ namespace CrawlerAPI.CrawlingFunctions.CrawlingFunctionsTheNewYorkTimes
                     Content = concatenateParagraphs.ToString(),
                     Date = Convert.ToDateTime(date),
                     SourceLink = sourceLink,
+                    ImageSource = imageSource
                 };
                 newsList.Add(news);
             }

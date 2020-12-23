@@ -1,5 +1,6 @@
 ﻿using CrawlerAPI.NewsModel;
 using HtmlAgilityPack;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,11 +21,18 @@ namespace CrawlerAPI.CrawlingFunctions.CrawlingFunctionsABCNews
             var htmlDocument = new HtmlDocument();
             htmlDocument.LoadHtml(html);
             var sections = htmlDocument.DocumentNode.Descendants("section").Where(node => node.GetAttributeValue("class", "").Equals("ContentRoll__Item")).ToList();
-            foreach (var section in sections)
+            var scriptText = htmlDocument.DocumentNode.Descendants("script").Where(node => node.InnerText.StartsWith("window['__abcnews__']")).FirstOrDefault().InnerText;
+            var contentJson = scriptText.Substring(scriptText.IndexOf('{'));
+            contentJson = contentJson.Substring(0, contentJson.Length - 1);
+            JObject json = JObject.Parse(contentJson);
+            var pageBands = json.GetValue("page").ToObject<JObject>().GetValue("content").ToObject<JObject>().GetValue("section").ToObject<JObject>().GetValue("bands");
+            var newsComponentItems = pageBands.Where(band => band.ToObject<JObject>().GetValue("type").ToString() == "articleroll").First().ToObject<JObject>().GetValue("blocks").First().ToObject<JObject>().GetValue("items").ToObject<JObject>().GetValue("latestVideos");
+            foreach (var newsItem in newsComponentItems)
             {
-                var descendantA = section.Descendants("a").FirstOrDefault();
-                var title = HtmlEntity.DeEntitize(descendantA.InnerText);
-                var sourceLink = descendantA.ChildAttributes("href").FirstOrDefault().Value;
+                var itemObj = newsItem.ToObject<JObject>();
+                var title = itemObj.GetValue("title").ToString();
+                var sourceLink = itemObj.GetValue("location").ToString();
+                var imageSource = itemObj.GetValue("image").ToString();
                 var newsHtml = await httpClient.GetStringAsync(sourceLink);
                 var newsHtmlDocument = new HtmlDocument();
                 newsHtmlDocument.LoadHtml(newsHtml);
@@ -60,6 +68,7 @@ namespace CrawlerAPI.CrawlingFunctions.CrawlingFunctionsABCNews
                     Content = concatenateParagraphs.ToString(),
                     Date = Convert.ToDateTime(date),
                     SourceLink = sourceLink,
+                    ImageSource = imageSource
                 };
                 newsList.Add(news);
             }

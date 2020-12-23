@@ -15,22 +15,28 @@ namespace CrawlerAPI.Tests
         [Fact]
         public void GivenWebsiteAndSubjectWhenGetAllNewsThenListIsNotNull()
         {
+            //Arrange
             string website = "abcnews";
             string subject = "politics";
+            //Act
             var actionResultTask = _newsController.GetNews(website, subject);
             actionResultTask.Wait();
             var viewResult = actionResultTask.Result;
+            //Assert
             Assert.NotNull(viewResult);
         }
 
         [Fact]
         public void GivenWebsiteAndSubjectWhenGetLatestNewsThenListIsNotNull()
         {
+            //Arrange
             string website = "bbc";
             string subject = "sport";
-            var actionResultTask = _newsController.GetLatestNews(website, subject);
+            //Act
+            var actionResultTask = _newsController.GetLatestNews(website, subject, 5);
             actionResultTask.Wait();
             var viewResult = actionResultTask.Result;
+            //Assert
             Assert.NotNull(viewResult);
         }
     }
