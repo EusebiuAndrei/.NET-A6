@@ -39,5 +39,6 @@ namespace CrawlerAPI.Tests
             //Assert
             Assert.NotNull(viewResult);
         }
+
     }
 }

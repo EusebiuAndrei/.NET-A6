@@ -1,4 +1,5 @@
 ﻿using FakeNewsClassifierAPI.DataModels;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,9 @@ namespace FakeNewsClassifierAPI.Controllers
         public FakeNewsClassifierController(){}
 
         [HttpPost]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public ActionResult<string> Post([FromBody] NewsData data)
         {
             if (!ModelState.IsValid)
@@ -28,6 +32,9 @@ namespace FakeNewsClassifierAPI.Controllers
         }
 
         [HttpPost("news-list")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public ActionResult<string> PostNewsList([FromBody] List<NewsData> newsData)
         {
             if (!ModelState.IsValid)
