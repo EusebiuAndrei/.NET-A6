@@ -10,6 +10,8 @@ using API.Entities;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
+using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace API.Data
 {
@@ -65,6 +67,59 @@ namespace API.Data
         public IEnumerable<News> GetLatestNews(int number)
         {
             return this.context.News.Include(n => n.Topic).AsNoTracking().OrderBy(o => o.Date).Take(number).ToList();
+        }
+
+        public void UpdateViews(int id)
+        {
+            News entity = this.context.News.FirstOrDefault(n => n.Id == id);
+            if (entity != null)
+            {
+                entity.Views += 1;
+            }
+
+            this.context.SaveChanges();
+        }
+
+        public void UpdateRead(int id)
+        {
+            News entity = this.context.News.FirstOrDefault(n => n.Id == id);
+            if (entity != null)
+            {
+                entity.Read += 1;
+            }
+
+            this.context.SaveChanges();
+        }
+
+        public string ValidateNewsAsync(NewsToClassify news)
+        {
+            HttpClient client = new HttpClient();
+
+            client.BaseAddress = new Uri("https://localhost:5003/");
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.DefaultRequestHeaders.Accept.Add(
+                new MediaTypeWithQualityHeaderValue("application/json"));
+
+            var postTask = client.PostAsJsonAsync("api/v1/validator", news);
+            postTask.Wait();
+
+            var result = postTask.Result;
+            if (result.IsSuccessStatusCode)
+            {
+
+                var readTask = result.Content.ReadAsAsync<string>();
+                readTask.Wait();
+
+                var newsResult = readTask.Result;
+                return newsResult;
+            }
+            else
+            {
+                Console.WriteLine(result.StatusCode);
+                return null;
+            }
+
+            
         }
     }
 }

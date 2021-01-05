@@ -6,6 +6,10 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Authorization;
 using API.Authentication;
+using System.Net.Http;
+using System;
+using System.Threading.Tasks;
+using System.Net.Http.Headers;
 
 namespace API.Controllers
 {
@@ -74,6 +78,32 @@ namespace API.Controllers
 
         [HttpGet("latest-news")]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public ActionResult<List<News>> GetLatestNews(int number) => _repository.GetLatestNews(number).ToList();
+        public ActionResult<List<News>> GetLatestNews(int number = 3) => _repository.GetLatestNews(number).ToList();
+
+        [HttpPut("views/{id}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public IActionResult UpdateViews(int id)
+        {
+            _repository.UpdateViews(id);
+            return NoContent();
+        }
+
+        [HttpPut("read/{id}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public IActionResult UpdateRead(int id)
+        {
+            _repository.UpdateRead(id);
+            return NoContent();
+        }
+
+        [HttpPost("validate")]
+        public ActionResult<string> ValidateText([FromBody] NewsToClassify data)
+        {
+            return Ok(_repository.ValidateNewsAsync(data));
+        }
     }
 }

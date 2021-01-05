@@ -345,5 +345,10 @@ C:\Fac\.NET-A6\backend\NewsAPI\NewsAPI.Tests\obj\Debug\netcoreapp3.1\NewsAPI.Tes
 C:\Fac\.NET-A6\backend\NewsAPI\NewsAPI.Tests\obj\Debug\netcoreapp3.1\NewsAPI.Tests.genruntimeconfig.cache
 C:\Fac\.NET-A6\backend\NewsAPI\NewsAPI.Tests\bin\Debug\netcoreapp3.1\Castle.Core.dll
 C:\Fac\.NET-A6\backend\NewsAPI\NewsAPI.Tests\bin\Debug\netcoreapp3.1\Moq.dll
-C:\Fac\.NET-A6\backend\NewsAPI\NewsAPI.Tests\obj\Debug\netcoreapp3.1\NewsAPI.Tests.csproj.CoreCompileInputs.cache
 C:\Fac\.NET-A6\backend\NewsAPI\NewsAPI.Tests\bin\Debug\netcoreapp3.1\System.Xml.XPath.XmlDocument.dll
+C:\Fac\.NET-A6\backend\NewsAPI\NewsAPI.Tests\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Fac\.NET-A6\backend\NewsAPI\NewsAPI.Tests\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\Fac\.NET-A6\backend\NewsAPI\NewsAPI.Tests\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\Fac\.NET-A6\backend\NewsAPI\NewsAPI.Tests\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Fac\.NET-A6\backend\NewsAPI\NewsAPI.Tests\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Core.dll
+C:\Fac\.NET-A6\backend\NewsAPI\NewsAPI.Tests\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Stores.dll

@@ -1,5 +1,7 @@
 using API.Entities;
 using System.Collections.Generic;
+using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace API.Data
 {
@@ -11,5 +13,9 @@ namespace API.Data
         void Remove(int id);
         void Update(int id, News news);
         IEnumerable<News> GetLatestNews(int number);
+        void UpdateViews(int id);
+        void UpdateRead(int id);
+
+        string ValidateNewsAsync(NewsToClassify news);
     }
 }
