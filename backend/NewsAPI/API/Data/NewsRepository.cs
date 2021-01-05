@@ -62,6 +62,9 @@ namespace API.Data
             this.context.SaveChanges();
         }
 
-
+        public IEnumerable<News> GetLatestNews(int number)
+        {
+            return this.context.News.Include(n => n.Topic).AsNoTracking().OrderBy(o => o.Date).Take(number).ToList();
+        }
     }
 }

@@ -10,5 +10,6 @@ namespace API.Data
         News GetById(int id);
         void Remove(int id);
         void Update(int id, News news);
+        IEnumerable<News> GetLatestNews(int number);
     }
 }

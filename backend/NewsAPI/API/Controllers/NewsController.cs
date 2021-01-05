@@ -71,5 +71,9 @@ namespace API.Controllers
             _repository.Remove(id);
             return NoContent();
         }
+
+        [HttpGet("latest-news")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public ActionResult<List<News>> GetLatestNews(int number) => _repository.GetLatestNews(number).ToList();
     }
 }
