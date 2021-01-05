@@ -63,13 +63,13 @@ namespace API.Data
             return _context.News.Find(id);
         }
 
-        public IEnumerable<News> GetQueriedNews(int pageNumber, int nrOfNews, string wordInTitle, 
+        public IEnumerable<News> GetQueriedNews(int pageNumber, int nrOfNews, string[] wordsInTitle, 
             DateTime? fromDate, DateTime? toDate, Int16? classifiedAs, int? topicId)
         {
             IEnumerable<News> query = _context.News.Include(n => n.Topic).AsNoTracking();
 
-            if (wordInTitle != null)
-                query = query.Where(n => (n.Title.ToLower().Contains(wordInTitle.ToLower())));
+            if (wordsInTitle != null)
+                query = query.Where(n => (wordsInTitle.Any(t => n.Title.ToLower().Contains(t))));
             
             if (fromDate.HasValue && toDate.HasValue)
                 query = query.Where(n => (DateTime.Compare((DateTime)fromDate, n.Date) <= 0 && DateTime.Compare(n.Date, (DateTime)toDate) <= 0));

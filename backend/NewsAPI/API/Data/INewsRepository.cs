@@ -8,7 +8,7 @@ namespace API.Data
     {
         void Create(News news);
         IEnumerable<News> GetAll();
-        IEnumerable<News> GetQueriedNews(int pageNumber, int nrOfNews, string wordInTitle, 
+        IEnumerable<News> GetQueriedNews(int pageNumber, int nrOfNews, string[] wordsInTitle, 
             DateTime? fromDate, DateTime? toDate, Int16? classifiedAs, int? topicId);
         News GetById(int id);
         void Remove(int id);

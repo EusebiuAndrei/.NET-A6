@@ -44,10 +44,10 @@ namespace API.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public ActionResult<List<News>> GetQueriedNews([FromQuery] int pageNumber, [FromQuery] int nrOfNews, [FromQuery] string wordInTitle, 
+        public ActionResult<List<News>> GetQueriedNews([FromQuery] int pageNumber, [FromQuery] int nrOfNews, [FromQuery] string[] wordsInTitle, 
             [FromQuery] DateTime? fromDate, [FromQuery] DateTime? toDate, [FromQuery] Int16? classifiedAs, [FromQuery] int? topicId)
         {
-            return _repository.GetQueriedNews(pageNumber, nrOfNews, wordInTitle, fromDate, toDate, classifiedAs, topicId).ToList();
+            return _repository.GetQueriedNews(pageNumber, nrOfNews, wordsInTitle, fromDate, toDate, classifiedAs, topicId).ToList();
         }
 
         [HttpPost]
