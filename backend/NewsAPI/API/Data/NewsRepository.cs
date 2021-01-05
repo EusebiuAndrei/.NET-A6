@@ -66,10 +66,11 @@ namespace API.Data
         public IEnumerable<News> GetQueriedNews(int pageNumber, int nrOfNews, string[] wordsInTitle, 
             DateTime? fromDate, DateTime? toDate, Int16? classifiedAs, int? topicId)
         {
+            char[] delimiterChars = { ' ', ',', '.', ':', '\t', '(', ')', '"', ';' };
             IEnumerable<News> query = _context.News.Include(n => n.Topic).AsNoTracking();
 
             if (wordsInTitle != null)
-                query = query.Where(n => (wordsInTitle.Any(t => n.Title.ToLower().Contains(t))));
+                query = query.Where(n => (wordsInTitle.Any(t => n.Title.ToLower().Split(delimiterChars).Contains(t.ToLower()))));
             
             if (fromDate.HasValue && toDate.HasValue)
                 query = query.Where(n => (DateTime.Compare((DateTime)fromDate, n.Date) <= 0 && DateTime.Compare(n.Date, (DateTime)toDate) <= 0));
