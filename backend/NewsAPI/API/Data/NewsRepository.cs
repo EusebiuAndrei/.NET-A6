@@ -1,18 +1,5 @@
-using System.Runtime.InteropServices;
-using System.Collections;
 using System.Data;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Data.Common;
-using System.ComponentModel;
-using System.Reflection;
-using System.Diagnostics.Tracing;
-using System.Linq.Expressions;
-using System.Net.Http.Headers;
 using System;
-using System.Xml;
-using System.Reflection.Metadata;
-using System.Globalization;
-using System.Runtime.CompilerServices;
 using API.Entities;
 using System.Collections.Generic;
 using System.Linq;
@@ -58,20 +45,24 @@ namespace API.Data
             return _context.News.Include(n => n.Topic).AsNoTracking().ToList();
         }
 
-        public News GetById(int id)
+        public News GetNewsById(int id)
         {
-            return _context.News.Find(id);
+            IQueryable<News> query = _context.News.Include(n => n.Topic).AsNoTracking();
+            query = query.Where(n => n.Id == id);
+            return query.First();
         }
 
-        public IEnumerable<News> GetQueriedNews(int pageNumber, int nrOfNews, string[] wordsInTitle, 
+        public IEnumerable<News> GetQueriedNews(int pageNumber, int nrOfNews, string search, 
             DateTime? fromDate, DateTime? toDate, Int16? classifiedAs, int? topicId)
         {
             char[] delimiterChars = { ' ', ',', '.', ':', '\t', '(', ')', '"', ';' };
             IEnumerable<News> query = _context.News.Include(n => n.Topic).AsNoTracking();
 
-            if (wordsInTitle != null)
-                query = query.Where(n => (wordsInTitle.Any(t => n.Title.ToLower().Split(delimiterChars).Contains(t.ToLower()))));
-            
+            if (!string.IsNullOrEmpty(search)) {
+                string[] words = search.ToLower().Split(' ');
+                query = query.Where(n => n.Title.ToLower().Split(delimiterChars).Intersect(words).Any());
+            }
+
             if (fromDate.HasValue && toDate.HasValue)
                 query = query.Where(n => (DateTime.Compare((DateTime)fromDate, n.Date) <= 0 && DateTime.Compare(n.Date, (DateTime)toDate) <= 0));
 
@@ -89,7 +80,5 @@ namespace API.Data
             _context.News.Remove(_context.News.FirstOrDefault(n => n.Id == id));
             _context.SaveChanges();
         }
-
-
     }
 }

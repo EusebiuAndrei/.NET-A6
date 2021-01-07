@@ -5,7 +5,6 @@ using API.Data;
 using API.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
-using API.Views;
 
 namespace API.Controllers
 {
@@ -30,7 +29,7 @@ namespace API.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public ActionResult<News> GetById(int id)
         {
-            var news = _repository.GetById(id);
+            var news = _repository.GetNewsById(id);
             
             if(news == null)
             {
@@ -44,10 +43,10 @@ namespace API.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public ActionResult<List<News>> GetQueriedNews([FromQuery] int pageNumber, [FromQuery] int nrOfNews, [FromQuery] string[] wordsInTitle, 
+        public ActionResult<List<News>> GetQueriedNews([FromQuery] int pageNumber, [FromQuery] int nrOfNews, [FromQuery] string search, 
             [FromQuery] DateTime? fromDate, [FromQuery] DateTime? toDate, [FromQuery] Int16? classifiedAs, [FromQuery] int? topicId)
         {
-            return _repository.GetQueriedNews(pageNumber, nrOfNews, wordsInTitle, fromDate, toDate, classifiedAs, topicId).ToList();
+            return _repository.GetQueriedNews(pageNumber, nrOfNews, search, fromDate, toDate, classifiedAs, topicId).ToList();
         }
 
         [HttpPost]
