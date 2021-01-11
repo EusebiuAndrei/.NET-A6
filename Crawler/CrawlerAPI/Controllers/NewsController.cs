@@ -4,6 +4,7 @@ using CrawlerAPI.CrawlingFunctions;
 using CrawlerAPI.NewsModel;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System;
 
 namespace CrawlerAPI.Controllers
 {
@@ -30,8 +31,10 @@ namespace CrawlerAPI.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<List<News>>> GetLatestNews(string website = "all", string subject = "all", int hoursNumber = 3)
         {
+            Console.WriteLine("apel crawler latest news");
             MappingCrawlingMethods mapping = new MappingCrawlingMethods();
             var news = await mapping.GetLatestNewsFromWebsiteWithSubject(website, subject, hoursNumber);
+            Console.WriteLine(news.Count);
             return Ok(news);
         }
     }
