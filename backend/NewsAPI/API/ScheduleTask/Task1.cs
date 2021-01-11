@@ -17,22 +17,27 @@ namespace AspNetCoreSchedulerDemo.ScheduleTask
 
         }
 
-        protected override string Schedule => "2 * * * *"; // every 1 min 
+        protected override string Schedule => "22 * * * *"; // every 1 min 
         //0 */3 * * * 
         public override Task ProcessInScope(IServiceProvider scopeServiceProvider)
         {
             Console.WriteLine("a intrat in task");
-            HttpClient client = new HttpClient();
+            HttpClient clientCrawlerApi = new HttpClient();
 
-            client.BaseAddress = new Uri("https://localhost:5001");
-            client.DefaultRequestHeaders.Accept.Clear();
-            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            clientCrawlerApi.BaseAddress = new Uri("https://localhost:5001");
+            clientCrawlerApi.DefaultRequestHeaders.Accept.Clear();
+            clientCrawlerApi.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             Console.WriteLine("incepe apelul la crawler");
             var list_topics = new List<string>() { "sport", "business", "coronavirus", "health", "world", "entertainment", "politics", "technology" };
             var list_news = new List<NewsFromCrawling>();
+            HttpClient clientFakeNewsApi = new HttpClient();
+
+            clientFakeNewsApi.BaseAddress = new Uri("https://localhost:5003/");
+            clientFakeNewsApi.DefaultRequestHeaders.Accept.Clear();
+            clientFakeNewsApi.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             foreach (var topic in list_topics)
             {
-                var getTask = client.GetAsync("api/v1/latest-news?website=all&subject="+topic+"&hoursNumber=3");
+                var getTask = clientCrawlerApi.GetAsync("api/v1/latest-news?website=all&subject="+topic+"&hoursNumber=3");
                 getTask.Wait();
                 var result = getTask.Result;
                 if (result.IsSuccessStatusCode)
@@ -41,6 +46,38 @@ namespace AspNetCoreSchedulerDemo.ScheduleTask
                     var readTask = result.Content.ReadAsAsync<List<NewsFromCrawling>>();
                     readTask.Wait();
                     var newsResult = readTask.Result;
+
+                    List<NewsToClassify> fromCrawlerToClassifyNews = new List<NewsToClassify>();
+                    foreach(var news in newsResult)
+                    {
+                        fromCrawlerToClassifyNews.Add(
+                            new NewsToClassify()
+                            {
+                                Title = news.Title,
+                                Text = news.Content,
+                                Subject = news.Subject
+                            }
+                        );
+                    }
+                    var postTask = clientFakeNewsApi.PostAsJsonAsync("api/v1/validator/news-list", fromCrawlerToClassifyNews);
+                    postTask.Wait();
+                    var resultPostClassifier = postTask.Result;
+                    if (resultPostClassifier.IsSuccessStatusCode)
+                    {
+                        var readTaskPost = result.Content.ReadAsAsync<List<NewsToClassify>>();
+                        readTaskPost.Wait();
+
+                        var newsResultPost = readTaskPost.Result;
+                        foreach(var item in newsResultPost)
+                        {
+                            Console.Write(item.Classified);
+                        }
+                        Console.WriteLine();
+                    }
+                    else
+                    {
+                        Console.WriteLine(resultPostClassifier.StatusCode);
+                    }
                     list_news.AddRange(newsResult);
                 }
                 else
