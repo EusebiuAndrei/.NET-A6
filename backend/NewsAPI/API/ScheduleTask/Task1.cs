@@ -17,7 +17,7 @@ namespace AspNetCoreSchedulerDemo.ScheduleTask
 
         }
 
-        protected override string Schedule => "22 * * * *"; // every 1 min 
+        protected override string Schedule => "52 * * * *"; // every 1 min 
         //0 */3 * * * 
         public override Task ProcessInScope(IServiceProvider scopeServiceProvider)
         {
@@ -55,7 +55,9 @@ namespace AspNetCoreSchedulerDemo.ScheduleTask
                             {
                                 Title = news.Title,
                                 Text = news.Content,
-                                Subject = news.Subject
+                                Subject = news.Subject,
+                                Date = news.Date.ToString(),
+                                Classified = ""
                             }
                         );
                     }
@@ -64,13 +66,13 @@ namespace AspNetCoreSchedulerDemo.ScheduleTask
                     var resultPostClassifier = postTask.Result;
                     if (resultPostClassifier.IsSuccessStatusCode)
                     {
-                        var readTaskPost = result.Content.ReadAsAsync<List<NewsToClassify>>();
+                        var readTaskPost = resultPostClassifier.Content.ReadAsAsync<List<string>>();
                         readTaskPost.Wait();
 
                         var newsResultPost = readTaskPost.Result;
                         foreach(var item in newsResultPost)
                         {
-                            Console.Write(item.Classified);
+                            Console.Write(item);
                         }
                         Console.WriteLine();
                     }
