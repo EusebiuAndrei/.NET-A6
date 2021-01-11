@@ -17,7 +17,7 @@ namespace AspNetCoreSchedulerDemo.ScheduleTask
 
         }
 
-        protected override string Schedule => "36 * * * *"; // every 1 min 
+        protected override string Schedule => "2 * * * *"; // every 1 min 
         //0 */3 * * * 
         public override Task ProcessInScope(IServiceProvider scopeServiceProvider)
         {
@@ -28,27 +28,28 @@ namespace AspNetCoreSchedulerDemo.ScheduleTask
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             Console.WriteLine("incepe apelul la crawler");
-            var getTask = client.GetAsync("api/v1/latest-news?website=all&subject=all&hoursNumber=3");
-            getTask.Wait();
-            var result = getTask.Result;
-            Console.WriteLine(result);
-            Console.WriteLine(result.StatusCode);
-            if (result.IsSuccessStatusCode)
+            var list_topics = new List<string>() { "sport", "business", "coronavirus", "health", "world", "entertainment", "politics", "technology" };
+            var list_news = new List<NewsFromCrawling>();
+            foreach (var topic in list_topics)
             {
-                Console.WriteLine("a facut request la crawler");
-                var readTask = result.Content.ReadAsAsync<List<NewsFromCrawling>>();
-                readTask.Wait();
-                var newsResult = readTask.Result;
-                foreach(var item in newsResult)
+                var getTask = client.GetAsync("api/v1/latest-news?website=all&subject="+topic+"&hoursNumber=3");
+                getTask.Wait();
+                var result = getTask.Result;
+                if (result.IsSuccessStatusCode)
                 {
-                    Console.WriteLine(item.Title);
+                    Console.WriteLine("a facut request la crawler");
+                    var readTask = result.Content.ReadAsAsync<List<NewsFromCrawling>>();
+                    readTask.Wait();
+                    var newsResult = readTask.Result;
+                    list_news.AddRange(newsResult);
+                }
+                else
+                {
+                    Console.WriteLine(result.StatusCode);
                 }
             }
-            else
-            {
-                Console.WriteLine(result.StatusCode);
-            }
 
+            Console.WriteLine(list_news.Count);
 
             return Task.CompletedTask;
         }
