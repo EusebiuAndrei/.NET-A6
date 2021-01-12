@@ -6,7 +6,7 @@ namespace AspNetCoreSchedulerDemo.BackgroundService
 {
     public abstract class ScopedProcessor : BackgroundService
     {
-        private IServiceScopeFactory _serviceScopeFactory;
+        protected IServiceScopeFactory _serviceScopeFactory;
 
         public ScopedProcessor(IServiceScopeFactory serviceScopeFactory) : base()
         {

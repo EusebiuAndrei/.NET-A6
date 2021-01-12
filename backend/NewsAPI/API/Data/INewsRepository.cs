@@ -1,7 +1,5 @@
 using API.Entities;
 using System.Collections.Generic;
-using System.Net.Http;
-using System.Threading.Tasks;
 
 namespace API.Data
 {
@@ -10,6 +8,7 @@ namespace API.Data
         void Create(News news);
         IEnumerable<News> GetAll();
         News GetById(int id);
+
         void Remove(int id);
         void Update(int id, News news);
         IEnumerable<News> GetLatestNews(int number);

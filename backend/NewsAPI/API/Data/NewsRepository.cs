@@ -1,17 +1,10 @@
-using System.Diagnostics.Tracing;
-using System.Linq.Expressions;
 using System.Net.Http.Headers;
 using System;
-using System.Xml;
-using System.Reflection.Metadata;
-using System.Globalization;
-using System.Runtime.CompilerServices;
 using API.Entities;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using System.Net.Http;
-using System.Threading.Tasks;
 
 namespace API.Data
 {

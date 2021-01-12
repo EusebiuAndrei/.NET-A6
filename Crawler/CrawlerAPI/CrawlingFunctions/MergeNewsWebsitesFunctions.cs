@@ -12,14 +12,10 @@ namespace CrawlerAPI.CrawlingFunctions
     {
         public static async Task<List<News>> GetAllNews()
         {
-            Console.WriteLine("get all news");
             List<News> allNews = new List<News>();
             allNews.AddRange(await AllNewsABC.GetNews());
-            Console.WriteLine("get all news abc");
             allNews.AddRange(await AllNewsBBC.GetNews());
-            Console.WriteLine("get all news bbc");
             allNews.AddRange(await AllNewsNYTimes.GetNews());
-            Console.WriteLine("get all news nytimes");
             return allNews;
         }
 

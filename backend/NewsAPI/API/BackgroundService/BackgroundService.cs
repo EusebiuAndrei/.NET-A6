@@ -11,7 +11,6 @@ namespace AspNetCoreSchedulerDemo.BackgroundService
         private readonly CancellationTokenSource _stoppingCts = new CancellationTokenSource();
         public virtual Task StartAsync(CancellationToken cancellationToken)
         {
-            Console.WriteLine("start async");
             _executingTask = ExecuteAsync(_stoppingCts.Token);
 
             if (_executingTask.IsCompleted)
@@ -41,7 +40,6 @@ namespace AspNetCoreSchedulerDemo.BackgroundService
 
         protected virtual async Task ExecuteAsync(CancellationToken stoppingToken)
         {
-            Console.WriteLine("execute async");
             do
             {
                 await Process();

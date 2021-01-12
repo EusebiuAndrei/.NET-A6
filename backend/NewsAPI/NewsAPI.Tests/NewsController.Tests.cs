@@ -1,8 +1,6 @@
 using API.Controllers;
 using API.Data;
 using API.Entities;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using Moq;
 using System;
 using System.Collections.Generic;

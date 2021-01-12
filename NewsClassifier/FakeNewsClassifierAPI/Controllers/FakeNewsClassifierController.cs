@@ -37,10 +37,6 @@ namespace FakeNewsClassifierAPI.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public ActionResult<string> PostNewsList([FromBody] List<NewsData> newsData)
         {
-            foreach(var item in newsData)
-            {
-                Console.WriteLine(item.Title);
-            }
             if (!ModelState.IsValid)
             {
                 return BadRequest();
@@ -51,12 +47,10 @@ namespace FakeNewsClassifierAPI.Controllers
             {
                 predictions.Add(ConsumeModel.Predict(data));
             }
-            Console.WriteLine("predicted");
             List<string> predictedValues = new List<string>();
             foreach(NewsPrediction prediction in predictions)
             {
                 predictedValues.Add(prediction.Prediction);
-                Console.WriteLine(prediction.Prediction);
             }
 
             return Ok(predictedValues);
