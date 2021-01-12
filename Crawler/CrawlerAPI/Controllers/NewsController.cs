@@ -4,6 +4,7 @@ using CrawlerAPI.CrawlingFunctions;
 using CrawlerAPI.NewsModel;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System;
 
 namespace CrawlerAPI.Controllers
 {

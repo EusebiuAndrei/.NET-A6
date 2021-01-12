@@ -13,6 +13,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using AspNetCoreSchedulerDemo.ScheduleTask;
 
 namespace API
 {
@@ -58,6 +59,7 @@ namespace API
 
             services.AddScoped<INewsRepository, NewsRepository>();
             services.AddScoped<ITopicRepository, TopicRepository>();
+            services.AddSingleton<IHostedService, Task1>();
 
             services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
             {
@@ -68,6 +70,7 @@ namespace API
             services.AddControllers().AddNewtonsoftJson(options =>
                 options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
             );
+
 
             services.AddSwaggerGen(c =>
             {

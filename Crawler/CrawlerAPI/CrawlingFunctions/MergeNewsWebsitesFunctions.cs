@@ -2,6 +2,7 @@
 using CrawlerAPI.CrawlingFunctions.CrawlingFunctionsBBC;
 using CrawlerAPI.CrawlingFunctions.CrawlingFunctionsTheNewYorkTimes;
 using CrawlerAPI.NewsModel;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -13,7 +14,7 @@ namespace CrawlerAPI.CrawlingFunctions
         {
             List<News> allNews = new List<News>();
             allNews.AddRange(await AllNewsABC.GetNews());
-            allNews.AddRange(await AllNewsBBC.GetNews()); 
+            allNews.AddRange(await AllNewsBBC.GetNews());
             allNews.AddRange(await AllNewsNYTimes.GetNews());
             return allNews;
         }

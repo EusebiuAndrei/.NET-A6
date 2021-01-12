@@ -58,7 +58,7 @@ namespace API.Controllers
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public IActionResult Create(News news)
+        public IActionResult Create([FromBody] News news)
         {
             _repository.Create(news);
             return CreatedAtAction(nameof(GetById), new { id = news.Id }, news);
@@ -69,7 +69,7 @@ namespace API.Controllers
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public IActionResult Update(int id, News news)
+        public IActionResult Update(int id, [FromBody] News news)
         {
             _repository.Update(id, news);
             return NoContent();

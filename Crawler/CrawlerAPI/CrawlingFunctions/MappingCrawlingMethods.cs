@@ -72,7 +72,7 @@ namespace CrawlerAPI.CrawlingFunctions
             List<News> filteredList = new List<News>();
             foreach(var news in allNewsList)
             {
-                if (Int32.Parse(news.Date.ToString("HH")) >= Int32.Parse(DateTime.Now.ToString("HH")) - hoursNumber && Int32.Parse(news.Date.ToString("HH")) <= Int32.Parse(DateTime.Now.ToString("HH")))
+                if (news.Date.ToString("MM-dd-yy") == DateTime.Now.ToString("MM-dd-yy") && Int32.Parse(news.Date.ToString("HH")) >= Int32.Parse(DateTime.Now.ToString("HH")) - hoursNumber && Int32.Parse(news.Date.ToString("HH")) <= Int32.Parse(DateTime.Now.ToString("HH")))
                 {
                     filteredList.Add(news);
                 }
