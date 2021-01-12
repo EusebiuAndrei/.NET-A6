@@ -40,6 +40,7 @@
           "Swashbuckle.AspNetCore.SwaggerGen": "5.6.3",
           "Swashbuckle.AspNetCore.SwaggerUI": "5.6.3",
           "System.Diagnostics.Tools": "4.3.0",
+          "NCrontab": "3.3.1",
           "Microsoft.AspNetCore.Antiforgery": "3.1.0.0",
           "Microsoft.AspNetCore.Authentication.Abstractions.Reference": "3.1.0.0",
           "Microsoft.AspNetCore.Authentication.Cookies.Reference": "3.1.0.0",
@@ -1071,6 +1072,17 @@
       "Microsoft.Win32.SystemEvents/4.7.0": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "3.1.0"
+        }
+      },
+      "NCrontab/3.3.1": {
+        "runtime": {
+          "lib/netstandard2.0/NCrontab.dll": {
+            "assemblyVersion": "3.3.1.0",
+            "fileVersion": "3.3.1.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/NCrontab.dll": {}
         }
       },
       "Newtonsoft.Json/12.0.2": {
@@ -3930,6 +3942,13 @@
       "sha512": "sha512-mtVirZr++rq+XCDITMUdnETD59XoeMxSpLRIII7JRI6Yj0LEDiO1pPn0ktlnIj12Ix8bfvQqQDMMIF9wC98oCA==",
       "path": "microsoft.win32.systemevents/4.7.0",
       "hashPath": "microsoft.win32.systemevents.4.7.0.nupkg.sha512"
+    },
+    "NCrontab/3.3.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-G3tzcIIgsiyZyVbHNPyn5+adaM9UjeVNgjrRsvXU7wo2sMhpvpQrir29dcjIND53H/fuTdgg9nI3SfFFg7barA==",
+      "path": "ncrontab/3.3.1",
+      "hashPath": "ncrontab.3.3.1.nupkg.sha512"
     },
     "Newtonsoft.Json/12.0.2": {
       "type": "package",

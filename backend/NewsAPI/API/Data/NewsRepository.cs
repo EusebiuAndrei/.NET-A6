@@ -7,7 +7,6 @@ using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using System.Net.Http;
 using System.Threading.Tasks;
-using System.Net.Http.Headers;
 
 namespace API.Data
 {

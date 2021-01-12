@@ -427,3 +427,4 @@ D:\.NET Projects\Back\.NET-A6\backend\NewsAPI\API\obj\Debug\netcoreapp3.1\API.cs
 D:\.NET Projects\Back\.NET-A6\backend\NewsAPI\API\obj\Debug\netcoreapp3.1\staticwebassets\API.StaticWebAssets.Manifest.cache
 D:\.NET Projects\Back\.NET-A6\backend\NewsAPI\API\obj\Debug\netcoreapp3.1\staticwebassets\API.StaticWebAssets.xml
 D:\.NET Projects\Back\.NET-A6\backend\NewsAPI\API\obj\Debug\netcoreapp3.1\API.genruntimeconfig.cache
+D:\.NET Projects\Back\.NET-A6\backend\NewsAPI\API\bin\Debug\netcoreapp3.1\NCrontab.dll
