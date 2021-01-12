@@ -28,6 +28,10 @@ namespace API.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         public ActionResult<List<News>> Get() => _repository.GetAll().ToList();
 
+        [HttpGet("topic/{id}", Name = "GetAllNewsByTopicId")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public ActionResult<List<News>> GetAllByTopicId(int id) => _repository.GetAllByTopicId(id).ToList();
+
         [HttpGet("{id}", Name = "GetNewsById")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]

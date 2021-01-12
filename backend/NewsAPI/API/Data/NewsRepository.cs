@@ -48,6 +48,11 @@ namespace API.Data
             return _context.News.Include(n => n.Topic).AsNoTracking().ToList();
         }
 
+        public IEnumerable<News> GetAllByTopicId(int id)
+        {
+            return _context.News.Where(n => n.TopicId == id).Include(n => n.Topic).AsNoTracking().ToList();
+        }
+
         public News GetNewsById(int id)
         {
             IQueryable<News> query = _context.News.Include(n => n.Topic).AsNoTracking();

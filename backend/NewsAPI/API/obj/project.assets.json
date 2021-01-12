@@ -6981,26 +6981,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\euseb\\.nuget\\packages\\": {}
+    "/Users/andu/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\.NET Projects\\Back\\.NET-A6\\backend\\NewsAPI\\API\\API.csproj",
+      "projectUniqueName": "/Users/andu/Documents/workspace/NET-A6/backend/NewsAPI/API/API.csproj",
       "projectName": "API",
-      "projectPath": "D:\\.NET Projects\\Back\\.NET-A6\\backend\\NewsAPI\\API\\API.csproj",
-      "packagesPath": "C:\\Users\\euseb\\.nuget\\packages\\",
-      "outputPath": "D:\\.NET Projects\\Back\\.NET-A6\\backend\\NewsAPI\\API\\obj\\",
+      "projectPath": "/Users/andu/Documents/workspace/NET-A6/backend/NewsAPI/API/API.csproj",
+      "packagesPath": "/Users/andu/.nuget/packages/",
+      "outputPath": "/Users/andu/Documents/workspace/NET-A6/backend/NewsAPI/API/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\euseb\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "/Users/andu/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -7108,7 +7106,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.1.403/RuntimeIdentifierGraph.json"
       }
     }
   }

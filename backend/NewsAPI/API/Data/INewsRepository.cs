@@ -10,6 +10,7 @@ namespace API.Data
     {
         void Create(News news);
         IEnumerable<News> GetAll();
+        IEnumerable<News> GetAllByTopicId(int id);
         IEnumerable<News> GetQueriedNews(int pageNumber, int nrOfNews, string search, 
             DateTime? fromDate, DateTime? toDate, Int16? classifiedAs, int? topicId);
         News GetNewsById(int id);
