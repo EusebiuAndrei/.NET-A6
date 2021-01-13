@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using API.Data;
@@ -6,6 +7,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Authorization;
 using API.Authentication;
+using System.Net.Http;
+using System.Threading.Tasks;
+using System.Net.Http.Headers;
 
 namespace API.Controllers
 {
@@ -24,13 +28,17 @@ namespace API.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         public ActionResult<List<News>> Get() => _repository.GetAll().ToList();
 
+        [HttpGet("topic/{id}", Name = "GetAllNewsByTopicId")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public ActionResult<List<News>> GetAllByTopicId(int id) => _repository.GetAllByTopicId(id).ToList();
+
         [HttpGet("{id}", Name = "GetNewsById")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public ActionResult<News> GetById(int id)
         {
-            var news = _repository.GetById(id);
+            var news = _repository.GetNewsById(id);
             
             if(news == null)
             {
@@ -40,6 +48,17 @@ namespace API.Controllers
             return news;
         }
 
+        [HttpGet("query", Name = "QueryNews")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public ActionResult<List<News>> GetQueriedNews([FromQuery] int pageNumber, [FromQuery] int nrOfNews, [FromQuery] string search, 
+            [FromQuery] DateTime? fromDate, [FromQuery] DateTime? toDate, [FromQuery] Int16? classifiedAs, [FromQuery] int? topicId)
+        {
+            return _repository.GetQueriedNews(pageNumber, nrOfNews, search, fromDate, toDate, classifiedAs, topicId).ToList();
+        }
+
+        [Authorize(Roles = UserRoles.Admin)]
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]

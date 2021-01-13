@@ -15,7 +15,6 @@ namespace CrawlerAPI.CrawlingFunctions
             List<News> allNews = new List<News>();
             allNews.AddRange(await AllNewsABC.GetNews());
             allNews.AddRange(await AllNewsBBC.GetNews());
-            allNews.AddRange(await AllNewsNYTimes.GetNews());
             return allNews;
         }
 
@@ -24,7 +23,6 @@ namespace CrawlerAPI.CrawlingFunctions
             List<News> allNews = new List<News>();
             allNews.AddRange(await SportCrawlerBBC.GetSportNews());
             allNews.AddRange(await SportCrawlerABCNews.GetSportNews());
-            allNews.AddRange(await SportCrawlerTheNewYorkTimes.GetSportNews());
             return allNews;
         }
 
@@ -32,7 +30,6 @@ namespace CrawlerAPI.CrawlingFunctions
         {
             List<News> allNews = new List<News>();
             allNews.AddRange(await BusinessCrawlerBBC.GetBusinessNews());
-            allNews.AddRange(await BusinessCrawlerTheNewYorkTimes.GetBusinessNews());
             return allNews;
         }
 
@@ -47,7 +44,6 @@ namespace CrawlerAPI.CrawlingFunctions
         {
             List<News> allNews = new List<News>();
             allNews.AddRange(await HealthCrawlerBBC.GetHealthNews());
-            allNews.AddRange(await HealthCrawlerTheNewYorkTimes.GetHealthNews());
             return allNews;
         }
 
@@ -70,7 +66,6 @@ namespace CrawlerAPI.CrawlingFunctions
         {
             List<News> allNews = new List<News>();
             allNews.AddRange(await PoliticsCrawlerABCNews.GetPoliticsNews());
-            allNews.AddRange(await PoliticsCrawlerTheNewYorkTimes.GetPoliticsNews());
             return allNews;
         }
 
@@ -78,7 +73,6 @@ namespace CrawlerAPI.CrawlingFunctions
         {
             List<News> allNews = new List<News>();
             allNews.AddRange(await TechnologyCrawlerABCNews.GetTechnologyNews());
-            allNews.AddRange(await TechnologyCrawlerTheNewYorkTimes.GetTechnologyNews());
             return allNews;
         }
     }

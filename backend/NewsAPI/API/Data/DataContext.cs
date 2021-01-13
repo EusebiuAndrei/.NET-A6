@@ -18,10 +18,10 @@ namespace API.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder) {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.Entity<Topic>()
-                .HasOne<News>(t => t.News)
-                .WithOne(nt => nt.Topic)
-                .HasForeignKey<News>(nt => nt.TopicId);
+            //modelBuilder.Entity<Topic>()
+            //    .HasOne<News>(t => t.News)
+            //    .WithOne(nt => nt.Topic)
+            //    .HasForeignKey<News>(nt => nt.TopicId);
         }
     }
 }

@@ -1,9 +1,12 @@
 using System;
+using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace API.Entities
 {
     public class News
     {
+        [Key]
         public int Id { get; set; }
         public string Title { get; set; }
         public DateTime Date { get; set; }
@@ -15,6 +18,7 @@ namespace API.Entities
         public int Read { get; set; }
         public int TopicId { get; set; }
 
+        [JsonIgnore]
         public virtual Topic Topic { get; set; }
     }
 }
