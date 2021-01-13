@@ -17,7 +17,7 @@ namespace AspNetCoreSchedulerDemo.ScheduleTask
 
         }
 
-        protected override string Schedule => "0 */3 * * *"; // every 3 hours 
+        protected override string Schedule => "0 */3 * * *"; // every 3 hours
         //44 * * * *   -> every hour on minute 44
 
         public int GetTopicBySubject(string subject)
@@ -40,7 +40,6 @@ namespace AspNetCoreSchedulerDemo.ScheduleTask
             INewsRepository newsRepository;
             var scope = _serviceScopeFactory.CreateScope();
             newsRepository = scope.ServiceProvider.GetRequiredService<INewsRepository>();
-            int id = 1;
 
             HttpClient clientCrawlerApi = new HttpClient();
             clientCrawlerApi.BaseAddress = new Uri("https://localhost:5001");
@@ -90,7 +89,6 @@ namespace AspNetCoreSchedulerDemo.ScheduleTask
                             newsRepository.Create(
                                 new News
                                 {
-                                    Id = id,
                                     Title = newsResult[i].Title,
                                     Date = newsResult[i].Date,
                                     Text = newsResult[i].Content,
@@ -102,7 +100,6 @@ namespace AspNetCoreSchedulerDemo.ScheduleTask
                                     TopicId = GetTopicBySubject(newsResult[i].Subject)
                                 }    
                             );
-                            id++;
                         }
                     }
                     else
