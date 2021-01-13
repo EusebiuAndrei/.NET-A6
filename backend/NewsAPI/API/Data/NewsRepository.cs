@@ -140,6 +140,7 @@ namespace API.Data
 
             
         }
+        
         public void Remove(int id)
         {
             _context.News.Remove(_context.News.FirstOrDefault(n => n.Id == id));

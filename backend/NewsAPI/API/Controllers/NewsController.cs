@@ -28,11 +28,11 @@ namespace API.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         public ActionResult<List<News>> Get() => _repository.GetAll().ToList();
 
-        [HttpGet("topic/{id}", Name = "GetAllNewsByTopicId")]
+        [HttpGet("topic/{topicId}", Name = "GetAllNewsByTopicId")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         public ActionResult<List<News>> GetAllByTopicId(int id) => _repository.GetAllByTopicId(id).ToList();
 
-        [HttpGet("{id}", Name = "GetNewsById")]
+        [HttpGet("{newsId}", Name = "GetNewsById")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -69,7 +69,7 @@ namespace API.Controllers
         }
 
         [Authorize(Roles = UserRoles.Admin)]
-        [HttpPut("{id}")]
+        [HttpPut("{newsId}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -80,7 +80,7 @@ namespace API.Controllers
         }
 
         [Authorize(Roles = UserRoles.Admin)]
-        [HttpDelete("{id}")]
+        [HttpDelete("{newsId}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -94,7 +94,7 @@ namespace API.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         public ActionResult<List<News>> GetLatestNews(int number = 3) => _repository.GetLatestNews(number).ToList();
 
-        [HttpPut("views/{id}")]
+        [HttpPut("views/{newsId}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -104,7 +104,7 @@ namespace API.Controllers
             return NoContent();
         }
 
-        [HttpPut("read/{id}")]
+        [HttpPut("read/{newsId}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
