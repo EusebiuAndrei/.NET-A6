@@ -17,7 +17,8 @@ namespace AspNetCoreSchedulerDemo.ScheduleTask
 
         }
 
-        protected override string Schedule => "0 */3 * * *"; // every 3 hours 
+        protected override string Schedule => "17 * * * *";
+        //" "0 */3 * * *"; // every 3 hours 
         //44 * * * *   -> every hour on minute 44
 
         public int GetTopicBySubject(string subject)
@@ -71,9 +72,7 @@ namespace AspNetCoreSchedulerDemo.ScheduleTask
                             {
                                 Title = news.Title,
                                 Text = news.Content,
-                                Subject = news.Subject,
-                                Date = news.Date.ToString(),
-                                Classified = ""
+                                Subject = news.Subject
                             }
                         );
                     }
