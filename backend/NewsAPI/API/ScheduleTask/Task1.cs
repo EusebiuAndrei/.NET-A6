@@ -17,7 +17,7 @@ namespace AspNetCoreSchedulerDemo.ScheduleTask
 
         }
 
-        protected override string Schedule => "17 * * * *";
+        protected override string Schedule => "35 * * * *";
         //" "0 */3 * * *"; // every 3 hours 
         //44 * * * *   -> every hour on minute 44
 
