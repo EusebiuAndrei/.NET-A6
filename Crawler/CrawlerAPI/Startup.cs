@@ -66,6 +66,14 @@ namespace CrawlerAPI
                 });
             }
 
+            app.UseDeveloperExceptionPage();
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "News API V1");
+                c.RoutePrefix = "swagger";
+            });
+
             app.UseHttpsRedirection();
 
             app.UseStaticFiles();
