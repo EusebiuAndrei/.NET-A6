@@ -42,13 +42,13 @@ namespace AspNetCoreSchedulerDemo.ScheduleTask
             newsRepository = scope.ServiceProvider.GetRequiredService<INewsRepository>();
 
             HttpClient clientCrawlerApi = new HttpClient();
-            clientCrawlerApi.BaseAddress = new Uri("https://localhost:5001");
+            clientCrawlerApi.BaseAddress = new Uri("https://crawler-app-uaic.azurewebsites.net");
             clientCrawlerApi.DefaultRequestHeaders.Accept.Clear();
             clientCrawlerApi.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             var list_topics = new List<string>() { "sport", "business", "coronavirus", "health", "world", "entertainment", "politics", "technology" };
             HttpClient clientFakeNewsApi = new HttpClient();
 
-            clientFakeNewsApi.BaseAddress = new Uri("https://localhost:5003/");
+            clientFakeNewsApi.BaseAddress = new Uri("https://classifier-app-uaic.azurewebsites.net");
             clientFakeNewsApi.DefaultRequestHeaders.Accept.Clear();
             clientFakeNewsApi.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             foreach (var topic in list_topics)
