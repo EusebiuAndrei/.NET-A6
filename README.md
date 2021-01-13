@@ -12,3 +12,8 @@ Trello: https://trello.com/b/8Y7bExlD/ochiidinumbra
   * bug/[bug-name] 
   * research/[research-name] \
     All of this should have as parent branch 'development' ! 
+# Development
+  * news api - https://news-app-uaic.azurewebsites.net
+  * crawler - https://crawler-app-uaic.azurewebsites.net
+  * classifier - https://classifier-app-uaic.azurewebsites.net
+  * frontend - soon
