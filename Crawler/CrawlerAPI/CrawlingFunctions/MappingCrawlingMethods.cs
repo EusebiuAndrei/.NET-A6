@@ -35,16 +35,6 @@ namespace CrawlerAPI.CrawlingFunctions
                         {"world", WorldCrawlerBBC.GetWorldNews}
                     }
                 },
-                {"thenewyorktimes", new Dictionary<string, Func<Task<List<News>>>>
-                    {
-                        {"all", AllNewsNYTimes.GetNews},
-                        {"business", BusinessCrawlerTheNewYorkTimes.GetBusinessNews},
-                        {"health", HealthCrawlerTheNewYorkTimes.GetHealthNews},
-                        {"politics", PoliticsCrawlerTheNewYorkTimes.GetPoliticsNews},
-                        {"sport", SportCrawlerTheNewYorkTimes.GetSportNews},
-                        {"technology", TechnologyCrawlerTheNewYorkTimes.GetTechnologyNews}
-                    }
-                },
                 {"all", new Dictionary<string, Func<Task<List<News>>>>
                     {
                         {"all", MergeNewsWebsitesFunctions.GetAllNews},
