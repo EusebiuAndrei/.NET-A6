@@ -114,7 +114,7 @@ namespace API.Data
         {
             HttpClient client = new HttpClient();
 
-            client.BaseAddress = new Uri("https://classifier-app-uaic.azurewebsites.net");
+            client.BaseAddress = new Uri("https://localhost:5003");
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(
                 new MediaTypeWithQualityHeaderValue("application/json"));
