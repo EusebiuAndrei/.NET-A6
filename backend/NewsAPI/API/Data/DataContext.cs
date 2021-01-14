@@ -15,6 +15,7 @@ namespace API.Data
 
         public DbSet<News> News { get; set; }
         public DbSet<Topic> Topic { get; set; }
+        public DbSet<UserPreferences> UserPreferences { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder) {
             base.OnModelCreating(modelBuilder);

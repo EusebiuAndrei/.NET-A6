@@ -7,5 +7,6 @@
     <ActiveDebugProfile>FakeNewsClassifierAPI</ActiveDebugProfile>
     <Controller_SelectedScaffolderID>ApiControllerEmptyScaffolder</Controller_SelectedScaffolderID>
     <Controller_SelectedScaffolderCategoryPath>root/Controller</Controller_SelectedScaffolderCategoryPath>
+    <NameOfLastUsedPublishProfile>classifier-app-uaic - Web Deploy</NameOfLastUsedPublishProfile>
   </PropertyGroup>
 </Project>
