@@ -22,7 +22,7 @@ namespace API.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         public ActionResult<List<Topic>> Get() => _repository.GetAll().ToList();
 
-        [HttpGet("{id}", Name = "GetTopicById")]
+        [HttpGet("{topicId}", Name = "GetTopicById")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -37,7 +37,7 @@ namespace API.Controllers
             return CreatedAtAction(nameof(GetById), new { id = topic.Id }, topic);
         }
 
-        [HttpPut("{id}")]
+        [HttpPut("{topicId}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -47,7 +47,7 @@ namespace API.Controllers
             return NoContent();
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("{topicId}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]

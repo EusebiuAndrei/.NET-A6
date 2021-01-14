@@ -16,4 +16,4 @@ Trello: https://trello.com/b/8Y7bExlD/ochiidinumbra
   * news api - https://news-app-uaic.azurewebsites.net
   * crawler - https://crawler-app-uaic.azurewebsites.net
   * classifier - https://classifier-app-uaic.azurewebsites.net
-  * frontend - soon
+  * frontend - https://net-a6-next-i7se1kiyr.vercel.app/
