@@ -116,7 +116,7 @@ namespace CrawlerAPI.CrawlingFunctions.CrawlingFunctionsBBC
                     Title = title,
                     Subject = subject,
                     Content = concatenateParagraphs.ToString(),
-                    Date = DateTime.ParseExact(date.Substring(0, 19), "yyyy-MM-ddTHH:mm:ss", CultureInfo.InvariantCulture),
+                    Date = DateTime.ParseExact(date.Substring(0, 19), "yyyy-MM-ddTHH:mm:ss", new CultureInfo("ro-RO")),
                     SourceLink = sourceLink,
                     ImageSource = imageSource
                 };

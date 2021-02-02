@@ -2,6 +2,7 @@
 using HtmlAgilityPack;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
@@ -73,7 +74,7 @@ namespace CrawlerAPI.CrawlingFunctions.CrawlingFunctionsTheNewYorkTimes
                     Title = title,
                     Subject = subject,
                     Content = concatenateParagraphs.ToString(),
-                    Date = Convert.ToDateTime(date),
+                    Date = Convert.ToDateTime(date, new CultureInfo("ro-RO")),
                     SourceLink = sourceLink,
                     ImageSource = imageSource
                 };
