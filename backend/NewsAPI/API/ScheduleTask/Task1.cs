@@ -17,8 +17,9 @@ namespace AspNetCoreSchedulerDemo.ScheduleTask
 
         }
 
-        protected override string Schedule => "0 */3 * * *"; // every 3 hours
+        protected override string Schedule => "0 */3 * * 0-6"; // every 3 hours every day
         //44 * * * *   -> every hour on minute 44
+        //0 */3 * * *
 
         public int GetTopicBySubject(string subject)
         {
